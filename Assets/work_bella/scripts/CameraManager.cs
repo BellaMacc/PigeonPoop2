@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-
+    /*
     [SerializeField] InputManager inputManager;
 
     [Header("Camera Follow Variables")]
@@ -23,6 +23,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Vector2 clampPitch;
     //[SerializeField] Vector2 clampYaw;
 
+    
 
     public void FollowTarget()
     {
@@ -57,4 +58,11 @@ public class CameraManager : MonoBehaviour
         FollowTarget();
         RotateCamera();
     }
+    */
+
+    private void OnEnable()
+    {
+        Debug.Log("Camera Manager Script is Depricated");
+    }
+
 }
