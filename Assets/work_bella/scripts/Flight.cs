@@ -22,7 +22,7 @@ namespace PlayerLocomotion
             
             //inputManager.OnFlap.AddListener(Flap);
         }
-
+           
         private void OnDisable()
         {
            
@@ -50,10 +50,10 @@ namespace PlayerLocomotion
                 StartFlight();
             }
 
-            // Give the bird an upward burst
+            // upward burst
             SetVerticalVelocity(flapBoost);
 
-            // Give the bird another period of suspension
+            //another period of suspension
             flightTimer = suspensionTime;
         }
 
@@ -66,8 +66,6 @@ namespace PlayerLocomotion
 
             if (flightTimer > 0f)
             {
-                // During the suspension period, don't let gravity
-                // pull the bird down.
                 if (player.linearVelocity.y < 0f)
                 {
                     SetVerticalVelocity(0f);
