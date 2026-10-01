@@ -1,0 +1,5 @@
+pathway texture - https://unsplash.com/photos/a-close-up-of-a-cracked-asphalt-surface-HULiDsqadn4
+
+Roads/sidewalks - https://assetstore.unity.com/packages/package/384736
+
+Trees - https://assetstore.unity.com/packages/3d/vegetation/trees/world-trees-northern-woodland-404662
