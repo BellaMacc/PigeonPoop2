@@ -8,6 +8,7 @@ public class poopSpawner : MonoBehaviour
 
     public void Poop()
     {
+        Instantiate(poop);
         if (meter.poopNum != 0)
         {
             Instantiate(poop);

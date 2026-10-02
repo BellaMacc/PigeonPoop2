@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// https://www.youtube.com/watch?v=wqydcq4kEEk&list=LL&index=1 I used this spawn vid to do my own spawning
 public class SpawnTest : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
