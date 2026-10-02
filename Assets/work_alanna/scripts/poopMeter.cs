@@ -10,19 +10,18 @@ poop counter +1
     object spawn at location 
     poop-1
 */
-public class hungerBar : MonoBehaviour
+public class poopMeter : MonoBehaviour
 {
-    public int poop = 0;
+    public int poopNum = 5;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Food")
         {
-            poop ++;
-            Debug.Log(poop);
+            poopNum++;
+            Debug.Log(poopNum);
             Destroy(other.gameObject);
         }
     }
-
     
 }
