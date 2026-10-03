@@ -21,7 +21,7 @@ public class poopMeter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Food")
+        if (other.transform.tag == "food")
         {
             poopNum++;
             Debug.Log(poopNum);
