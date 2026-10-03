@@ -8,6 +8,7 @@ TagManager:
   - mainRoad
   - sideRoad
   - corner
+  - food
   layers:
   - Default
   - TransparentFX
