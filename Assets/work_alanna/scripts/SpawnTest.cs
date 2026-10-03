@@ -6,10 +6,12 @@ public class SpawnTest : MonoBehaviour
     public GameObject mySphere;
     public poopMeter poopMeter;
     public Transform spawnPoint;
+    public AudioSource audioSource;
     public void SpawnSphere()
     {
         if (poopMeter.poopNum > 0) {
             poopMeter.poopNum--;
+            audioSource.Play();
             Instantiate(mySphere, spawnPoint.position, spawnPoint.rotation);
         }
         
