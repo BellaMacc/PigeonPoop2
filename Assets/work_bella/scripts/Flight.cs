@@ -13,33 +13,22 @@ namespace PlayerLocomotion
         [SerializeField] private float flapBoost = 5f;
         [SerializeField] private float downwardAcceleration = 1f;
         [SerializeField] private float flightLaunchForce = 8f;
+        [SerializeField] private float fallAccelerationMultiplier = 1.5f;
+        
 
         private float flightTimer;
+        private float fallTime;
         private bool isFlying = false;
-
-        private void OnEnable()
-        {
-            
-            //inputManager.OnFlap.AddListener(Flap);
-        }
-           
-        private void OnDisable()
-        {
-           
-            //inputManager.OnFlap.RemoveListener(Flap);
-        }
 
         private void StartFlight()
         {
             isFlying = true;
             flightTimer = suspensionTime;
 
-            // Stop existing vertical movement
             Vector3 velocity = player.linearVelocity;
             velocity.y = flightLaunchForce;
             player.linearVelocity = velocity;
 
-            // Handle vertical movement ourselves
             player.useGravity = false;
         }
 
@@ -48,13 +37,15 @@ namespace PlayerLocomotion
             if (!isFlying)
             {
                 StartFlight();
+                return;
             }
 
-            // upward burst
-            SetVerticalVelocity(flapBoost);
+            Vector3 velocity = player.linearVelocity;
+            velocity.y += flapBoost;
+            player.linearVelocity = velocity;
 
-            //another period of suspension
             flightTimer = suspensionTime;
+            fallTime = 0f;
         }
 
         private void FixedUpdate()
@@ -64,36 +55,23 @@ namespace PlayerLocomotion
 
             flightTimer -= Time.fixedDeltaTime;
 
-            if (flightTimer > 0f)
+            if (flightTimer <= 0f)
             {
-                if (player.linearVelocity.y < 0f)
-                {
-                    SetVerticalVelocity(0f);
-                }
-            }
-            else
-            {
-                // Begin a slow descent
-                ApplySlowFall();
+                fallTime += Time.fixedDeltaTime;
+
+                float fallAcceleration =
+                    downwardAcceleration *
+                    Mathf.Pow(fallAccelerationMultiplier, fallTime);
+
+                Vector3 velocity = player.linearVelocity;
+                velocity.y -= fallAcceleration * Time.fixedDeltaTime;
+                player.linearVelocity = velocity;
             }
         }
 
-        private void ApplySlowFall()
+        public bool IsFlying()
         {
-            Vector3 velocity = player.linearVelocity;
-
-            velocity.y -= downwardAcceleration * Time.fixedDeltaTime;
-
-            player.linearVelocity = velocity;
-        }
-
-        private void SetVerticalVelocity(float verticalVelocity)
-        {
-            Vector3 velocity = player.linearVelocity;
-
-            velocity.y = verticalVelocity;
-
-            player.linearVelocity = velocity;
+            return isFlying;
         }
     }
 }

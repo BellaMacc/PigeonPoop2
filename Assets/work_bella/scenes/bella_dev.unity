@@ -1194,6 +1194,7 @@ MonoBehaviour:
   flapBoost: 3
   downwardAcceleration: 2
   flightLaunchForce: 8
+  fallAccelerationMultiplier: 1.2
 --- !u!114 &709777432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.XZ_Movement
   inputManager: {fileID: 1936673708}
-  movementSpeed: 7
+  movementSpeed: 10
   rotationSpeed: 5
   cameraObject: {fileID: 1864405641}
   player: {fileID: 1950764450}
@@ -3680,6 +3681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1723280168}
+  - component: {fileID: 1723280169}
   m_Layer: 0
   m_Name: CharacterModel
   m_TagString: Untagged
@@ -3705,6 +3707,22 @@ Transform:
   - {fileID: 146815955}
   m_Father: {fileID: 1950764449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723280169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723280167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e858c51d4ff12a84da2340b859041967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationBanking
+  inputManager: {fileID: 1936673708}
+  flight: {fileID: 709777431}
+  maxBankAngle: 30
+  bankSpeed: 5
 --- !u!1 &1795871032
 GameObject:
   m_ObjectHideFlags: 0
