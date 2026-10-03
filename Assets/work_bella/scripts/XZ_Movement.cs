@@ -21,11 +21,14 @@ namespace PlayerLocomotion
         float verticalInput;
         float horizontalInput;
 
+        Vector3 targetDirection = Vector3.zero;
+
         // direction variables
 
         private void Awake()
         {
-           // inputManager = GetComponent<InputManager>();
+            // inputManager = GetComponent<InputManager>();
+           
         }
         public void OnMove()
         {
@@ -76,24 +79,37 @@ namespace PlayerLocomotion
 
         private void HandleRotation()
         {
-            Vector3 targetDirection = Vector3.zero;
 
-            targetDirection = cameraObject.forward * verticalInput;
+            Vector3 targetDirection = cameraObject.forward * verticalInput;
             targetDirection += cameraObject.right * horizontalInput;
 
-            targetDirection.y = 0;
+            // Keep rotation on the XZ plane
+            targetDirection.y = 0f;
+
+            // Don't calculate a new rotation if we're not moving
+            if (targetDirection.sqrMagnitude < 0.001f)
+                return;
+
             targetDirection.Normalize();
 
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-            Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation =
+                Quaternion.LookRotation(targetDirection, Vector3.up);
+
+            Quaternion playerRotation =
+                Quaternion.Slerp(
+                    player.transform.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.deltaTime
+                );
 
             player.transform.rotation = playerRotation;
         }
 
         private void FixedUpdate()
         {
-            HandleMovement();
             HandleRotation();
+            HandleMovement();
+           
         }
 
 
