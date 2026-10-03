@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 183214393}
   m_Layer: 0
   m_Name: Food
-  m_TagString: Food
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,14 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5719920a852f6e1428858a7fae4715a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
-  inputManager: {fileID: 1936673708}
-  targetTransform: {fileID: 1723280168}
-  cameraTransform: {fileID: 309091780}
-  cameraPivot: {fileID: 444433398}
-  cameraFollowSpeed: 0.2
-  pitchLookSpeed: 0.5
-  yawLookSpeed: 0.5
-  clampPitch: {x: -90, y: 90}
 --- !u!1 &333407626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1370,7 @@ MonoBehaviour:
   flapBoost: 3
   downwardAcceleration: 2
   flightLaunchForce: 8
+  fallAccelerationMultiplier: 1.5
 --- !u!114 &709777432
 MonoBehaviour:
   m_ObjectHideFlags: 0
