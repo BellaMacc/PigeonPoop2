@@ -16,12 +16,16 @@ public class poopMeter : MonoBehaviour
 {
     public int poopNum = 5;
 
+    //Sound Effect by freesound_community from Pixabay
+    public AudioSource audioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Food")
         {
             poopNum++;
             Debug.Log(poopNum);
+            audioSource.Play();
             Destroy(other.gameObject);
         }
     }
