@@ -5,3 +5,11 @@ Roads/sidewalks - https://assetstore.unity.com/packages/package/384736
 Trees - https://assetstore.unity.com/packages/3d/vegetation/trees/world-trees-northern-woodland-404662
 
 Buildings - https://assetstore.unity.com/packages/3d/environments/urban/hdrp-nyc-like-city-buildings-set-pbr-239452
+
+Train - https://assetstore.unity.com/packages/3d/vehicles/simple-train-pack-313190
+
+Building under construction - https://assetstore.unity.com/packages/3d/environments/industrial-zone-modular-pack-v1-0-142157
+
+Crane - https://www.turbosquid.com/FullPreview/1252236
+
+Construction Barricade - https://www.turbosquid.com/3d-models/3d-construction-barricade-1297109
