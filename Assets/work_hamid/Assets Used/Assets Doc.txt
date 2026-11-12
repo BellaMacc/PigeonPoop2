@@ -13,3 +13,5 @@ Building under construction - https://assetstore.unity.com/packages/3d/environme
 Crane - https://www.turbosquid.com/FullPreview/1252236
 
 Construction Barricade - https://www.turbosquid.com/3d-models/3d-construction-barricade-1297109
+
+Street Lights - https://assetstore.unity.com/packages/3d/props/exterior/street-lamps-165658
