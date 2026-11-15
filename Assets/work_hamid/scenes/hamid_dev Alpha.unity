@@ -381,6 +381,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8679815908891496118, guid: 4f138a3467baa2f41aedaa61c94460de, type: 3}
   m_PrefabInstance: {fileID: 1581065168}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &37513305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1785846408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &43368806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1387,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129363780}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &137244522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 2142464760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &138764514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1961,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161945502}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &164744485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 2139176937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &178739176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8025113987957616293, guid: 849ef96c7feed50469aa8c9bd5f1bfff, type: 3}
@@ -2194,7 +2209,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 840907455}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 840907454}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &200835077 stripped
 Transform:
@@ -2272,7 +2293,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 437518072}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 437518071}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &202013112 stripped
 Transform:
@@ -2727,7 +2754,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920739690}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920739689}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &241361852 stripped
 Transform:
@@ -4120,7 +4153,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 722820460}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 722820459}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &364027914 stripped
 Transform:
@@ -4793,7 +4832,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1275878797}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1275878796}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &426821898 stripped
 Transform:
@@ -4878,6 +4923,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2991756831493838882, guid: 5106b120de5d21a418f77180c26f1c45, type: 3}
   m_PrefabInstance: {fileID: 431082406}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &437518068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 202013111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &437518071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437518068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &437518072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437518068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.10198012}
 --- !u!1 &438040231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,6 +5054,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438040231}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &443936788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1726445493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &460059368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6549,6 +6640,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561776565}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &572202285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1257766577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &589879884
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,6 +8263,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721123832}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &722820456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 364027913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &722820459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722820456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &722820460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722820456}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980045}
 --- !u!1001 &727621557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8525,6 +8662,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740993423}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &745703499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1968602538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &751553104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
@@ -9586,6 +9728,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836254224}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &840907451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 200835076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &840907454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840907451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &840907455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840907451}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980045}
 --- !u!1 &851887077
 GameObject:
   m_ObjectHideFlags: 0
@@ -13462,7 +13645,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1360186515}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1360186514}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1136474469 stripped
 Transform:
@@ -13889,7 +14078,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043471864}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043471863}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1148671214 stripped
 Transform:
@@ -14519,7 +14714,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139214405}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139214404}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1246639678 stripped
 Transform:
@@ -14904,12 +15105,59 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1257766582}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1257766581}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1257766578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 1257766577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1257766581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1257766582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572202285}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101980105}
+--- !u!1 &1261640136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1870189497}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269006496
 GameObject:
@@ -14944,6 +15192,47 @@ Transform:
   - {fileID: 2091846363}
   m_Father: {fileID: 267810842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1275878793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 426821897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1275878796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275878793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1275878797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275878793}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101980045}
 --- !u!1001 &1278513886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15942,6 +16231,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6953284759792847461, guid: 785e577c345240b45aa4e46a3bcabd9e, type: 3}
   m_PrefabInstance: {fileID: 788688882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1360186511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1136474468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360186514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360186511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1360186515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360186511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101980075}
 --- !u!1 &1371494570
 GameObject:
   m_ObjectHideFlags: 0
@@ -26019,13 +26349,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726445498}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726445497}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1726445494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 1726445493}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726445497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443936788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1726445498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443936788}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980045}
 --- !u!1001 &1732147789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26802,13 +27174,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785846413}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785846412}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1785846409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 1785846408}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1785846412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37513305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1785846413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37513305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980075}
 --- !u!1 &1790043145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
@@ -32433,13 +32847,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1870189502}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1870189501}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1870189498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 1870189497}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870189501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261640136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1870189502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261640136}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980045}
 --- !u!1001 &1876316774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33057,6 +33513,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919360266}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1920739686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 241361851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920739689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920739686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1920739690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920739686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101979926}
 --- !u!1 &1938227196
 GameObject:
   m_ObjectHideFlags: 0
@@ -33755,13 +34252,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1968602543}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1968602542}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &1968602539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 1968602538}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968602542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745703499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &1968602543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745703499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980075}
 --- !u!1 &1984554029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1345920499177881321, guid: 785e577c345240b45aa4e46a3bcabd9e, type: 3}
@@ -34156,6 +34695,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1426550114146101516, guid: 7e6ec650108c9d94d97c0943b872129d, type: 3}
   m_PrefabInstance: {fileID: 2035037918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2043471860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1148671213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2043471863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043471860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &2043471864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043471860}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101979986}
 --- !u!1 &2046411495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
@@ -35682,13 +36262,96 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139176942}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139176941}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &2139176938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 2139176937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139176941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164744485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &2139176942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164744485}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101980045}
+--- !u!1 &2139214401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+  m_PrefabInstance: {fileID: 1246639677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139214404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139214401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &2139214405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139214401}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370112, z: 0.101980045}
 --- !u!1001 &2142464760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35760,13 +36423,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142464765}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142464764}
   m_SourcePrefab: {fileID: 100100000, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
 --- !u!4 &2142464761 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 846d0b79e4ea8ed42a0dfc8091cbc168, type: 3}
   m_PrefabInstance: {fileID: 2142464760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2142464764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137244522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532abcb74fe548e4ab09253ee0daf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverHazard
+  gameOverManager: {fileID: 2018139723}
+  pigeon: {fileID: 112156917}
+  gameOverMessage: You crashed into the construction building!
+--- !u!65 &2142464765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137244522}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3610745, y: 0.42169785, z: 0.20395987}
+  m_Center: {x: -0.07343029, y: -0.017370105, z: 0.101980045}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
