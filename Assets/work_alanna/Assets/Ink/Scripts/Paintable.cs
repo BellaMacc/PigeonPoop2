@@ -2,42 +2,50 @@ using UnityEngine;
 
 public class Paintable : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     const int TEXTURE_SIZE = 1024;
 
-    public RenderTexture mask;        // raw painted splats
-    public RenderTexture uvIslands;   // UV-space splotch positions
-    public RenderTexture extend;     // "ink creep" - grown islands
-    public RenderTexture support;    // what the visible material samples
+    public float extendsIslandOffset = 1;
 
-    public Renderer rend;
+    RenderTexture extendIslandsRenderTexture;
+    RenderTexture uvIslandsRenderTexture;
+    RenderTexture maskRenderTexture;
+    RenderTexture supportTexture;
+
+    Renderer rend;
+
+    int maskTextureID = Shader.PropertyToID("_MaskTexture");
+
+    public RenderTexture getMask() => maskRenderTexture;
+    public RenderTexture getUVIslands() => uvIslandsRenderTexture;
+    public RenderTexture getExtend() => extendIslandsRenderTexture;
+    public RenderTexture getSupport() => supportTexture;
+    public Renderer getRenderer() => rend;
 
     void Start()
     {
-        mask = NewRT();
-        uvIslands = NewRT();
-        extend = NewRT();
-        support = NewRT();
+        maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        maskRenderTexture.filterMode = FilterMode.Bilinear;
+
+        extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        extendIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+
+        uvIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        uvIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+
+        supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        supportTexture.filterMode = FilterMode.Bilinear;
 
         rend = GetComponent<Renderer>();
-        // The wall material (Shader Graph) must have a texture slot named _MaskTexture
-        rend.material.SetTexture("_MaskTexture", extend);
+        rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
 
-        InkManager.instance.InitTextures(this);
-    }
-
-    RenderTexture NewRT()
-    {
-        var rt = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
-        rt.filterMode = FilterMode.Bilinear;
-        rt.wrapMode = TextureWrapMode.Repeat;
-        return rt;
+        PaintManager.instance.initTextures(this);
     }
 
     void OnDisable()
     {
-        foreach (var rt in new[] { mask, uvIslands, extend, support })
-            rt?.Release();
+        maskRenderTexture.Release();
+        uvIslandsRenderTexture.Release();
+        extendIslandsRenderTexture.Release();
+        supportTexture.Release();
     }
-
 }
