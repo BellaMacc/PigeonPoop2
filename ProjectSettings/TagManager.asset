@@ -9,6 +9,7 @@ TagManager:
   - sideRoad
   - corner
   - food
+  - wall
   layers:
   - Default
   - TransparentFX
