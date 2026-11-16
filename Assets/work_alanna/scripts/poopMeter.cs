@@ -21,12 +21,16 @@ public class poopMeter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Food")
+        if (other.transform.tag == "food")
         {
-            poopNum++;
-            Debug.Log(poopNum);
-            audioSource.Play();
-            Destroy(other.gameObject);
+            if (poopNum < 5)
+            {
+                poopNum++;
+                Debug.Log(poopNum);
+                audioSource.Play();
+                Destroy(other.gameObject);
+            }
+            
         }
     }
     
