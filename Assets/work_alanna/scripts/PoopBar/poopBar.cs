@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+//reference: https://www.youtube.com/watch?v=S0gmSDRXzgs
 
 public class poopBar : MonoBehaviour
 {
