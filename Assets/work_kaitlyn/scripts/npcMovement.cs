@@ -1,4 +1,5 @@
- using System.Collections;
+using NUnit.Framework.Constraints;
+using System.Collections;
 using Unity.VectorGraphics;
 using UnityEngine;
 
@@ -8,16 +9,24 @@ public class npcMovement : MonoBehaviour
     public bool movePos;
     public float speed = 0.5f;
     public int moveDirection = 0;
+    Material ogMat;
+    public Material poopMat;
+    public bool stop = false;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        ogMat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stop == true)
+        {
+            return;
+        }
+
         //get position
         Vector3 newCord = transform.position;
 
@@ -190,5 +199,19 @@ public class npcMovement : MonoBehaviour
                 }
             }
         }
+    }
+    public void gotHit()
+    {
+        stop = true;
+
+        GetComponent<Renderer>().material = poopMat;
+
+        Invoke("resetWalk", 3);
+    }
+
+    void resetWalk()
+    {
+        stop = false;
+        GetComponent<Renderer>().material = ogMat;
     }
 }

@@ -3289,6 +3289,8 @@ MonoBehaviour:
   movePos: 0
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &428131334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4973,6 +4975,8 @@ MonoBehaviour:
   movePos: 0
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &808789970
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5181,6 +5185,8 @@ MonoBehaviour:
   movePos: 0
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!54 &813103715
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6046,6 +6052,8 @@ MonoBehaviour:
   movePos: 1
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &956221962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8488,6 +8496,8 @@ MonoBehaviour:
   movePos: 1
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &1353489855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8942,6 +8952,8 @@ MonoBehaviour:
   movePos: 0
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &1417019022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9510,6 +9522,8 @@ MonoBehaviour:
   movePos: 1
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &1457708579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11351,6 +11365,8 @@ MonoBehaviour:
   movePos: 1
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &1619058942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13407,6 +13423,8 @@ MonoBehaviour:
   movePos: 1
   speed: 0.3
   moveDirection: 0
+  poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
+  stop: 0
 --- !u!65 &2007359600
 BoxCollider:
   m_ObjectHideFlags: 0
