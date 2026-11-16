@@ -15,6 +15,7 @@ poop counter +1
 public class poopMeter : MonoBehaviour
 {
     public int poopNum = 5;
+    public randomFoodSpawner food;
 
     //Sound Effect by freesound_community from Pixabay
     public AudioSource audioSource;
@@ -26,6 +27,7 @@ public class poopMeter : MonoBehaviour
             if (poopNum < 5)
             {
                 poopNum++;
+                food.foodOnField--;
                 Debug.Log(poopNum);
                 audioSource.Play();
                 Destroy(other.gameObject);
