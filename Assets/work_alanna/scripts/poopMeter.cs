@@ -28,8 +28,10 @@ public class poopMeter : MonoBehaviour
             {
                 poopNum++;
                 food.foodOnField--;
+
                 Debug.Log(poopNum);
-                audioSource.Play();
+                SoundFXManager.PlaySound(SoundType.EAT);
+                //audioSource.Play();
                 Destroy(other.gameObject);
             }
             
