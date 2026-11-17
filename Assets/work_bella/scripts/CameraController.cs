@@ -18,8 +18,7 @@ namespace PlayerLocomotion
         [Header("Orbit Restrictions")]
         [SerializeField] private float maxOrbitAngle = 100f;
 
-        [Header("Poop Camera")]
-        [SerializeField] private float poopPitch = 80f;
+        
 
         [Header("Camera Settings")]
         [SerializeField] private float minPitch = 5f;
@@ -37,7 +36,7 @@ namespace PlayerLocomotion
 
         // Camera state
         private float lastLookTime;
-        private bool poopMode;
+    
 
         private void Start()
         {
@@ -53,23 +52,7 @@ namespace PlayerLocomotion
             lookInput = inputManager.ReadCameraMovement();
         }
 
-        // Toggle poop camera mode
-        public void TogglePoopMode()
-        {
-            poopMode = !poopMode;
-
-            targetPitch = poopMode
-                ? poopPitch
-                : normalPitch;
-
-            // Reset vertical angle to normal limits
-            targetPitch = Mathf.Clamp(
-                targetPitch,
-                poopMode ? 65f : minPitch,
-                maxPitch
-            );
-        }
-
+      
         private void HandleCameraInput()
         {
             // Check whether the player is actively moving the camera
@@ -78,48 +61,27 @@ namespace PlayerLocomotion
             if (isLooking)
             {
                 // Horizontal orbit
-                orbitOffset +=
-                    lookInput.x * orbitSpeed * Time.deltaTime;
+                orbitOffset += lookInput.x * orbitSpeed * Time.deltaTime;
 
                 // Restrict normal camera to rear hemisphere
-                if (!poopMode)
-                {
-                    orbitOffset = Mathf.Clamp(
-                        orbitOffset,
-                        -maxOrbitAngle,
-                        maxOrbitAngle
-                    );
-                }
+
+                orbitOffset = Mathf.Clamp( orbitOffset,-maxOrbitAngle, maxOrbitAngle);
+               
 
                 // Vertical orbit
                 targetPitch += lookInput.y * orbitSpeed * Time.deltaTime;
 
-                targetPitch = Mathf.Clamp(
-                    targetPitch,
-                    poopMode ? 65f : minPitch,
-                    maxPitch
-                );
+                targetPitch = Mathf.Clamp(targetPitch, minPitch, maxPitch);
 
                 // Reset recenter timer only when player moves camera
                 lastLookTime = Time.time;
             }
 
             // Recenter after inactivity
-            if (!poopMode && Time.time - lastLookTime >= recenterDelay)
-            {
-                orbitOffset = Mathf.MoveTowardsAngle(
-                    orbitOffset,
-                    0f,
-                    recenterSpeed * Time.deltaTime
-                );
-            }
-
+            orbitOffset = Mathf.MoveTowardsAngle( orbitOffset, 0f,recenterSpeed * Time.deltaTime );
+           
             // Smooth pitch
-            currentPitch = Mathf.Lerp(
-                currentPitch,
-                targetPitch,
-                pitchSmoothSpeed * Time.deltaTime
-            );
+            currentPitch = Mathf.Lerp( currentPitch,targetPitch,pitchSmoothSpeed * Time.deltaTime);
         }
 
         private void UpdateCameraPivot()
@@ -138,11 +100,7 @@ namespace PlayerLocomotion
             float cameraYaw = playerYaw + orbitOffset;
 
             // Apply rotation without pitch or roll from player
-            cameraPivot.rotation = Quaternion.Euler(
-                currentPitch,
-                cameraYaw,
-                0f
-            );
+            cameraPivot.rotation = Quaternion.Euler(currentPitch,cameraYaw,0f);
         }
 
         private void LateUpdate()

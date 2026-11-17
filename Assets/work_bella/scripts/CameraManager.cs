@@ -1,68 +1,43 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    /*
-     [SerializeField] InputManager inputManager;
+    [Header("Camera References")]
+    [SerializeField] private CinemachineCamera normalCamera;
+    [SerializeField] private CinemachineCamera poopCamera;
 
-     [Header("Camera Follow Variables")]
-     [SerializeField] Transform targetTransform;
-     [SerializeField] Transform cameraTransform;
-     [SerializeField] Transform cameraPivot;
+    [Header("Camera Priority")]
+    [SerializeField] private int activePriority = 20;
+    [SerializeField] private int inactivePriority = 10;
 
-     [SerializeField] float cameraFollowSpeed = 0.2f;
-     private Vector3 cameraFollowVelocity = Vector3.zero;
+    private bool poopMode;
 
-     [Header("Camera Look Variables")]
-     float lookYaw; //
-     float lookPitch;
-
-     [SerializeField] float pitchLookSpeed;
-     [SerializeField] float yawLookSpeed;
-
-     [SerializeField] Vector2 clampPitch;
-     //[SerializeField] Vector2 clampYaw;
-
-
-
-     public void FollowTarget()
-     {
-         Vector3 targetPosition = Vector3.SmoothDamp(cameraTransform.position, targetTransform.position, ref cameraFollowVelocity, cameraFollowSpeed);
-         transform.position = targetPosition;
-     }
-
-
-     public void RotateCamera()
-     {
-         lookYaw += (inputManager.ReadCameraMovement().x * yawLookSpeed);
-        //lookYaw = Mathf.Clamp(lookYaw, clampYaw.x, clampYaw.y);
-
-         lookPitch -= (inputManager.ReadCameraMovement().y * pitchLookSpeed);
-         lookPitch = Mathf.Clamp(lookPitch, clampPitch.x, clampPitch.y);
-
-         Vector3 rotation = Vector3.zero;
-         rotation.y = lookYaw;
-         Quaternion targetRotation = Quaternion.Euler(rotation);
-         cameraTransform.rotation = targetRotation;
-
-         rotation = Vector3.zero;
-         rotation.x = lookPitch;
-         targetRotation = Quaternion.Euler(rotation);
-         cameraPivot.localRotation = targetRotation;
- ;
-     }
-
-
-     private void LateUpdate()
-     {
-         FollowTarget();
-         RotateCamera();
-     }
-     */
-
-    private void OnEnable()
+    private void Start()
     {
-        Debug.Log("Camera Script Depricateced- Bella");
+        SetCameraMode(false);
+    }
+
+    public void TogglePoopMode()
+    {
+        poopMode = !poopMode;
+        SetCameraMode(poopMode);
+    }
+
+    private void SetCameraMode(bool usePoopCamera)
+    {
+        normalCamera.Priority = usePoopCamera
+            ? inactivePriority
+            : activePriority;
+
+        poopCamera.Priority = usePoopCamera
+            ? activePriority
+            : inactivePriority;
+    }
+
+    public bool IsPoopMode()
+    {
+        return poopMode;
     }
 }
 
