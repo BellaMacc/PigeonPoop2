@@ -30,6 +30,7 @@ public class SpawnTest : MonoBehaviour
     IEnumerator ShootPoop()
     {
         // Start the particle effect
+
         poopParticles.Play();
 
         // Wait for 1 second
