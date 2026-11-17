@@ -9,7 +9,7 @@ public class AnimationBanking : MonoBehaviour
     [SerializeField] private float bankSpeed = 5f;
 
     private float currentBank;
-
+    /*
     private void Update()
     {
         float targetBank = 0f;
@@ -31,6 +31,11 @@ public class AnimationBanking : MonoBehaviour
             0f,
             currentBank
         );
+    }*/
+
+    private void OnEnable()
+    {
+        Debug.Log("Banking Animation Depricated -Bella");
     }
 }
 

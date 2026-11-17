@@ -6,113 +6,117 @@ namespace PlayerLocomotion
 
     public class XZ_Movement : MonoBehaviour
     {
-        [SerializeField] InputManager inputManager;
+         [Header("References")]
+        [SerializeField] private InputManager inputManager;
+        [SerializeField] private Rigidbody player;
+        [SerializeField] private Transform cameraObject;
 
-        //public variables
-        [SerializeField] float movementSpeed = 7;
-        [SerializeField] float rotationSpeed = 5;
-        [SerializeField] Transform cameraObject;
-        [SerializeField] Rigidbody player;
+        [Header("Movement Settings")]
+        [SerializeField] private float movementSpeed = 7f;
 
-        // movement variables
-        Vector3 moveDirection;
-     
-        Vector2 movementInput;
-        float verticalInput;
-        float horizontalInput;
+        [Header("Rotation Settings")]
+        [SerializeField] private float rotationDampening = 0.1f;
 
-        Vector3 targetDirection = Vector3.zero;
+        private Vector2 movementInput;
 
-        // direction variables
+        private Vector3 moveDirection;
+        private float targetAngle;
+        private float turnSmoothVelocity;
+
+        private const float INPUT_DEADZONE = 0.001f;
 
         private void Awake()
         {
-            // inputManager = GetComponent<InputManager>();
-           
+            if (player == null)
+                player = GetComponent<Rigidbody>();
         }
+
         public void OnMove()
         {
             movementInput = inputManager.ReadMovement();
-            verticalInput = movementInput.y;
-            horizontalInput = movementInput.x;
         }
 
-
-        private void HandleMovement()
+        private void CalculateMovement()
         {
-            /*
-            //forward value
-            moveDirection = cameraObject.forward * verticalInput;
-            moveDirection += cameraObject.right * horizontalInput;
-            moveDirection.Normalize();
+            Vector3 inputDirection = new Vector3(
+                movementInput.x,
+                0f,
+                movementInput.y
+            );
 
-            //moveDirection.y = 0; // this is subject to change when introducing flying
+            inputDirection = Vector3.ClampMagnitude(
+                inputDirection, 1f
+            );
 
-            //adjusting speed based on float
-            moveDirection *= movementSpeed;
+            if (inputDirection.sqrMagnitude < INPUT_DEADZONE)
+            {
+                moveDirection = Vector3.zero;
+                return;
+            }
 
-            Vector3 movementVelocity = moveDirection;
-            player.linearVelocity = moveDirection;*/
-            //modify so that it only controls the xz plane of movement
-
+            // Camera-relative directions
             Vector3 forward = cameraObject.forward;
             Vector3 right = cameraObject.right;
 
-            // Keep horizontal movement on the XZ plane
+            // Ignore camera pitch and roll
             forward.y = 0f;
             right.y = 0f;
 
             forward.Normalize();
             right.Normalize();
 
-            moveDirection = forward * verticalInput;
-            moveDirection += right * horizontalInput;
+            moveDirection =
+                forward * inputDirection.z +
+                right * inputDirection.x;
 
-            // Prevent diagonal movement from being faster
-            moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
+            moveDirection = Vector3.ClampMagnitude(
+                moveDirection, 1f
+            );
 
-            moveDirection *= movementSpeed;
+            // Determine desired player rotation
+            targetAngle = Mathf.Atan2(
+                moveDirection.x,
+                moveDirection.z
+            ) * Mathf.Rad2Deg;
+        }
 
-            // Only XZ movement
-            player.linearVelocity = new Vector3( moveDirection.x, player.linearVelocity.y,moveDirection.z);
+        private void HandleMovement()
+        {
+            Vector3 velocity = player.linearVelocity;
+
+            // Control horizontal movement only
+            velocity.x = moveDirection.x * movementSpeed;
+            velocity.z = moveDirection.z * movementSpeed;
+
+            player.linearVelocity = velocity;
         }
 
         private void HandleRotation()
         {
-
-            Vector3 targetDirection = cameraObject.forward * verticalInput;
-            targetDirection += cameraObject.right * horizontalInput;
-
-            // Keep rotation on the XZ plane
-            targetDirection.y = 0f;
-
-            // Don't calculate a new rotation if we're not moving
-            if (targetDirection.sqrMagnitude < 0.001f)
+            if (moveDirection.sqrMagnitude < INPUT_DEADZONE)
                 return;
 
-            targetDirection.Normalize();
+            float smoothAngle = Mathf.SmoothDampAngle(
+                player.rotation.eulerAngles.y,
+                targetAngle,
+                ref turnSmoothVelocity,
+                rotationDampening,
+                Mathf.Infinity,
+                Time.fixedDeltaTime
+            );
 
-            Quaternion targetRotation =
-                Quaternion.LookRotation(targetDirection, Vector3.up);
-
-            Quaternion playerRotation =
-                Quaternion.Slerp(
-                    player.transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime
-                );
-
-            player.transform.rotation = playerRotation;
+            player.MoveRotation(
+                Quaternion.Euler(0f, smoothAngle, 0f)
+            );
         }
 
         private void FixedUpdate()
         {
-            HandleRotation();
+            CalculateMovement();
             HandleMovement();
-           
+            HandleRotation();
         }
-
-
     }
 
 }
+

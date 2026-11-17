@@ -4,74 +4,71 @@ namespace PlayerLocomotion
 {
     public class Flight : MonoBehaviour
     {
+       
         [Header("References")]
-        [SerializeField] private InputManager inputManager;
         [SerializeField] private Rigidbody player;
+        [SerializeField] private Transform groundCheck;
 
         [Header("Flight Settings")]
-        [SerializeField] private float suspensionTime = 5f;
-        [SerializeField] private float flapBoost = 5f;
-        [SerializeField] private float downwardAcceleration = 1f;
-        [SerializeField] private float flightLaunchForce = 8f;
-        [SerializeField] private float fallAccelerationMultiplier = 1.5f;
-        
+        [SerializeField] private float flapForce = 7f;
+        [SerializeField] private float maxUpwardVelocity = 12f;
 
-        private float flightTimer;
-        private float fallTime;
-        private bool isFlying = false;
+        [Header("Ground Detection")]
+        [SerializeField] private LayerMask groundLayers;
+        [SerializeField] private float groundCheckRadius = 0.2f;
+        [SerializeField] private float groundCheckDistance = 0.25f;
 
-        private void StartFlight()
+        private bool isGrounded;
+
+        public bool IsGrounded => isGrounded;
+        public bool IsAirborne => !isGrounded;
+
+        private void Awake()
         {
-            isFlying = true;
-            flightTimer = suspensionTime;
-
-            Vector3 velocity = player.linearVelocity;
-            velocity.y = flightLaunchForce;
-            player.linearVelocity = velocity;
-
-            player.useGravity = false;
+            if (player == null)
+                player = GetComponent<Rigidbody>();
         }
 
         public void Flap()
         {
-            if (!isFlying)
-            {
-                StartFlight();
-                return;
-            }
-
+            // Reset downward momentum or boost existing upward momentum
             Vector3 velocity = player.linearVelocity;
-            velocity.y += flapBoost;
+
+            velocity.y = Mathf.Min(
+                Mathf.Max(velocity.y, 0f) + flapForce,
+                maxUpwardVelocity
+            );
+
             player.linearVelocity = velocity;
 
-            flightTimer = suspensionTime;
-            fallTime = 0f;
+            // Prevent immediate ground detection after takeoff
+            isGrounded = false;
         }
 
-        private void FixedUpdate()
+        private void CheckGrounded()
         {
-            if (!isFlying)
-                return;
+            isGrounded = Physics.SphereCast(
+                groundCheck.position,
+                groundCheckRadius,
+                Vector3.down,
+                out _,
+                groundCheckDistance,
+                groundLayers,
+                QueryTriggerInteraction.Ignore
+            );
 
-            flightTimer -= Time.fixedDeltaTime;
-
-            if (flightTimer <= 0f)
+            if (isGrounded && player.linearVelocity.y < 0f)
             {
-                fallTime += Time.fixedDeltaTime;
-
-                float fallAcceleration =
-                    downwardAcceleration *
-                    Mathf.Pow(fallAccelerationMultiplier, fallTime);
-
                 Vector3 velocity = player.linearVelocity;
-                velocity.y -= fallAcceleration * Time.fixedDeltaTime;
+                velocity.y = 0f;
                 player.linearVelocity = velocity;
             }
         }
 
-        public bool IsFlying()
+        private void FixedUpdate()
         {
-            return isFlying;
+            CheckGrounded();
         }
+        
     }
 }
