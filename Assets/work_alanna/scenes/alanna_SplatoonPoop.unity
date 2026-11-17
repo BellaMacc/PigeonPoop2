@@ -1159,6 +1159,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0c89fb5ff55d145874f7f250a687de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
+  soundList:
+  - name: FLAP
+    sounds: []
+  - name: COO
+    sounds: []
+  - name: EAT
+    sounds: []
+  - name: POOP
+    sounds: []
+  - name: SPLAT
+    sounds: []
+  - name: FOOTSTEP
+    sounds: []
+  - name: NPC
+    sounds: []
 --- !u!4 &628186240
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,6 +1345,7 @@ GameObject:
   - component: {fileID: 666250252}
   - component: {fileID: 666250251}
   - component: {fileID: 666250250}
+  - component: {fileID: 666250253}
   m_Layer: 4
   m_Name: Particle System
   m_TagString: Untagged
@@ -1501,7 +1517,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1554,8 +1570,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 25
-      minScalar: 20
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5128,7 +5144,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5293,7 +5309,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -6262,7 +6278,7 @@ Transform:
   m_GameObject: {fileID: 666250249}
   serializedVersion: 2
   m_LocalRotation: {x: -0.90928113, y: -0, z: -0, w: -0.41618237}
-  m_LocalPosition: {x: -0.04, y: 0.84, z: -0.5}
+  m_LocalPosition: {x: -0.04, y: 0.81, z: -0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6271,6 +6287,21 @@ Transform:
   - {fileID: 672342117}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -229.188, y: 0, z: 0}
+--- !u!114 &666250253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666250249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b67673a146f1d0418b6bb779b7480e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::poopCollision
+  poopParticles: {fileID: 666250251}
+  inkSplatPrefab: {fileID: 1018912473}
+  npcTag: npc
 --- !u!1 &672342116
 GameObject:
   m_ObjectHideFlags: 0
@@ -29293,6 +29324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::poopMeter
   poopNum: 5
+  food: {fileID: 0}
   audioSource: {fileID: 1950764453}
 --- !u!82 &1950764453
 AudioSource:
@@ -29533,9 +29565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895552407670d8147b0e9e37afa4b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTest
-  mySphere: {fileID: 2694487428666355946, guid: f998173044f45c040ac6213bdc0f0be0, type: 3}
+  poopParticles: {fileID: 666250251}
+  shootDuration: 1
   poopMeter: {fileID: 1950764452}
-  spawnPoint: {fileID: 2117753402}
   audioSource: {fileID: 1975676939}
 --- !u!4 &1975676938
 Transform:
