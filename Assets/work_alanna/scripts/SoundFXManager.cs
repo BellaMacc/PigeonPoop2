@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+//https://www.youtube.com/watch?v=g5WT91Sn3hg&t=281s
 public enum SoundType
 {
     FLAP, 
@@ -78,10 +79,7 @@ public class SoundFXManager : MonoBehaviour
     }
 
     // 3D SOUND - Fixed position in the world
-    public static void PlaySound3DAtPosition(
-        SoundType sound,
-        Vector3 position,
-        float volume = 1f)
+    public static void PlaySound3DAtPosition(SoundType sound, Vector3 position, float volume = 1f)
     {
         AudioClip clip = instance.GetRandomClip(sound);
 

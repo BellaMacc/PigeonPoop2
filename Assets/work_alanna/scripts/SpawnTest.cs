@@ -33,13 +33,10 @@ public class SpawnTest : MonoBehaviour
 
         poopParticles.Play();
 
-        // Wait for 1 second
+        // Wait 
         yield return new WaitForSeconds(shootDuration);
 
         // Stop emitting new particles
-        poopParticles.Stop(
-            true,
-            ParticleSystemStopBehavior.StopEmitting
-        );
+        poopParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 }
