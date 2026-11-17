@@ -1385,18 +1385,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 628186238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0c89fb5ff55d145874f7f250a687de, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f44e3135857d674eb24ff771b03b5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
   soundList:
-  - {fileID: 8300000, guid: f9459db8916a0bf48af2fd9fd6e89606, type: 3}
-  - {fileID: 8300000, guid: 412895213f41262439089cd8cbf96f0e, type: 3}
-  - {fileID: 8300000, guid: a9d5976221b4eef4daad9294256638e8, type: 3}
-  - {fileID: 8300000, guid: 9ed9323263f015e41bace1cfff779a01, type: 3}
-  - {fileID: 8300000, guid: bfd1de588c23e8b458864056a3615549, type: 3}
-  - {fileID: 8300000, guid: 35ba9a3452d0c6140bb8114a14db6888, type: 3}
-  - {fileID: 8300000, guid: 525276639b9e2b345a6572ddecd77f5e, type: 3}
-  - {fileID: 8300000, guid: 920088044b58da24290797b461567246, type: 3}
+  - name: FLAP
+    sounds:
+    - {fileID: 8300000, guid: f9459db8916a0bf48af2fd9fd6e89606, type: 3}
+  - name: COO
+    sounds:
+    - {fileID: 8300000, guid: 412895213f41262439089cd8cbf96f0e, type: 3}
+  - name: EAT
+    sounds:
+    - {fileID: 8300000, guid: 9ed9323263f015e41bace1cfff779a01, type: 3}
+  - name: POOP
+    sounds:
+    - {fileID: 8300000, guid: bfd1de588c23e8b458864056a3615549, type: 3}
+  - name: SPLAT
+    sounds:
+    - {fileID: 8300000, guid: 35ba9a3452d0c6140bb8114a14db6888, type: 3}
+  - name: FOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 525276639b9e2b345a6572ddecd77f5e, type: 3}
+  - name: NPC
+    sounds:
+    - {fileID: 8300000, guid: 920088044b58da24290797b461567246, type: 3}
 --- !u!4 &628186240
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,14 +1438,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
   soundList:
-  - {fileID: 8300000, guid: f9459db8916a0bf48af2fd9fd6e89606, type: 3}
-  - {fileID: 8300000, guid: 412895213f41262439089cd8cbf96f0e, type: 3}
-  - {fileID: 8300000, guid: a9d5976221b4eef4daad9294256638e8, type: 3}
-  - {fileID: 8300000, guid: 9ed9323263f015e41bace1cfff779a01, type: 3}
-  - {fileID: 8300000, guid: bfd1de588c23e8b458864056a3615549, type: 3}
-  - {fileID: 8300000, guid: 35ba9a3452d0c6140bb8114a14db6888, type: 3}
-  - {fileID: 8300000, guid: 525276639b9e2b345a6572ddecd77f5e, type: 3}
-  - {fileID: 8300000, guid: 920088044b58da24290797b461567246, type: 3}
+  - name: FLAP
+    sounds:
+    - {fileID: 8300000, guid: f9459db8916a0bf48af2fd9fd6e89606, type: 3}
+  - name: COO
+    sounds:
+    - {fileID: 8300000, guid: 412895213f41262439089cd8cbf96f0e, type: 3}
+  - name: EAT
+    sounds:
+    - {fileID: 8300000, guid: 9ed9323263f015e41bace1cfff779a01, type: 3}
+  - name: POOP
+    sounds:
+    - {fileID: 8300000, guid: bfd1de588c23e8b458864056a3615549, type: 3}
+  - name: SPLAT
+    sounds:
+    - {fileID: 8300000, guid: 35ba9a3452d0c6140bb8114a14db6888, type: 3}
+  - name: FOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 525276639b9e2b345a6572ddecd77f5e, type: 3}
+  - name: NPC
+    sounds:
+    - {fileID: 8300000, guid: 920088044b58da24290797b461567246, type: 3}
 --- !u!82 &628186242
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1490,7 +1516,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -12,7 +12,8 @@ public class SpawnTest : MonoBehaviour
     {
         if (poopMeter.poopNum > 0) {
             poopMeter.poopNum--;
-            SoundFXManager.PlaySound(SoundType.POOP);
+            //SoundFXManager.PlaySound(SoundType.POOP);
+            SoundFXManager.PlaySound3D(SoundType.POOP, transform);
             //audioSource.Play();
             Instantiate(mySphere, spawnPoint.position, spawnPoint.rotation);
         }
