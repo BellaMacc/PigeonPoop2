@@ -1,20 +1,35 @@
 using UnityEngine;
-/*
+
+public enum SoundType
+{
+    FLAP, 
+    COO,
+    WIND,
+    EAT, 
+    POOP, 
+    SPLAT,
+    FOOTSTEP,
+    NPC,
+
+}
+[RequireComponent(typeof(AudioSource))]
 public class SoundFXManager : MonoBehaviour
 {
-    public static SoundFXManager instance;
+    [SerializeField] private AudioClip[] soundList;
+    private static SoundFXManager instance;
+    private AudioSource audioSource;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        instance = this;
     }
 
-    public voidPlaySoundFXClip(AudioClip audioClip, Transform spawnTransform)
+    private void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
+    }
+    public static void PlaySound(SoundType sound, float volume =1)
+    {
+        instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
 }
-*/
