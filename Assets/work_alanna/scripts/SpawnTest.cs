@@ -5,7 +5,7 @@ using System.Collections;
 public class SpawnTest : MonoBehaviour
 {
     public ParticleSystem poopParticles;
-    public float shootDuration = 1f;
+    public float shootDuration = 0.1f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
