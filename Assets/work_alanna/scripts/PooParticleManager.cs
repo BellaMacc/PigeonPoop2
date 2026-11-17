@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 // https://www.youtube.com/watch?v=wqydcq4kEEk&list=LL&index=1 I used this spawn vid to do my own spawning
-public class SpawnTest : MonoBehaviour
+public class PooParticleManager: MonoBehaviour
 {
     public ParticleSystem poopParticles;
     public float shootDuration = 0.1f;

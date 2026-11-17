@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PlayerLocomotion
 {
-    public class CameraController : MonoBehaviour
+    public class CameraInputController : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private InputManager inputManager;

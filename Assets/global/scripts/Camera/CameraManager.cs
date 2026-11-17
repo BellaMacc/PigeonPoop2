@@ -7,38 +7,35 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineCamera normalCamera;
     [SerializeField] private CinemachineCamera poopCamera;
 
-    [Header("Camera Priority")]
+    [Header("Priority Settings")]
     [SerializeField] private int activePriority = 20;
     [SerializeField] private int inactivePriority = 10;
 
-    private bool poopMode;
+    private bool isPoopCameraActive;
 
     private void Start()
     {
-        SetCameraMode(false);
+        SetPoopCamera(false);
     }
 
-    public void TogglePoopMode()
+    public void SetPoopCamera(bool active)
     {
-        poopMode = !poopMode;
-        SetCameraMode(poopMode);
-    }
+        isPoopCameraActive = active;
 
-    private void SetCameraMode(bool usePoopCamera)
-    {
-        normalCamera.Priority = usePoopCamera
+        normalCamera.Priority = active
             ? inactivePriority
             : activePriority;
 
-        poopCamera.Priority = usePoopCamera
+        poopCamera.Priority = active
             ? activePriority
             : inactivePriority;
     }
 
-    public bool IsPoopMode()
+    public bool IsPoopCameraActive()
     {
-        return poopMode;
+        return isPoopCameraActive;
     }
+    
 }
 
 
