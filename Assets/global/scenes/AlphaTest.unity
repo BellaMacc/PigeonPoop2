@@ -187,8 +187,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 17, y: -172}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 17, y: -66.54}
+  m_SizeDelta: {x: 137.3, y: 13.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44248422
 MonoBehaviour:
@@ -5345,7 +5345,7 @@ Transform:
   m_GameObject: {fileID: 135243797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalPosition: {x: 0, y: 121.79001, z: 65.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5383,10 +5383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6b73597beed4348914294cd56c2486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::poopBar
-  poopSlider: {fileID: 44248422}
-  poopBarValueText: {fileID: 1429098193}
-  maxHealth: 5
-  poop: {fileID: 1337899940}
 --- !u!114 &147138014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5480,8 +5476,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193569013}
-  - component: {fileID: 193569014}
+  - component: {fileID: 193569016}
   - component: {fileID: 193569015}
+  - component: {fileID: 193569014}
   m_Layer: 0
   m_Name: CharacterData
   m_TagString: Untagged
@@ -5532,9 +5529,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigeonData
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1585624870}
   maxStomach: 10
   currentStomach: 0
+--- !u!114 &193569016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193569012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5184a050123b04e958ec862fd6aa85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigeonManager
+  collisionDetection: {fileID: 1337899940}
+  pigeonData: {fileID: 193569015}
+  foodSpawner: {fileID: 560307777}
+  flight: {fileID: 984285817}
+  audioSource: {fileID: 1081179571}
 --- !u!1 &232063455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,8 +5680,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273757977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7009092, y: 0.00007504155, z: -0.00007374311, w: 0.7132506}
-  m_LocalPosition: {x: -0.000045427438, y: 12.858114, z: -0.21588844}
+  m_LocalRotation: {x: 0.70090926, y: -0.000001556052, z: 0.0000015291279, w: 0.7132505}
+  m_LocalPosition: {x: 0.00000094194326, y: 133.66812, z: 65.08412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16070,8 +16084,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1081179572}
+  m_Children: []
   m_Father: {fileID: 1337899939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &984285817
@@ -16166,6 +16179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Poop
   pooParticles: {fileID: 1050488227}
   pigeonModes: {fileID: 193569014}
+  pigeonManager: {fileID: 193569016}
 --- !u!1 &1050488226
 GameObject:
   m_ObjectHideFlags: 0
@@ -16198,8 +16212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTest
   poopParticles: {fileID: 345320790}
   shootDuration: 1
-  poopMeter: {fileID: 1337899940}
-  audioSource: {fileID: 1050488228}
 --- !u!82 &1050488228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16439,7 +16451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 984285816}
+  m_Father: {fileID: 1337899939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1125777490
 GameObject:
@@ -16688,7 +16700,7 @@ GameObject:
   - component: {fileID: 1337899940}
   m_Layer: 0
   m_Name: CharacterController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16750,11 +16762,12 @@ Transform:
   m_GameObject: {fileID: 1337899936}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.49, z: -0}
+  m_LocalPosition: {x: 0, y: 121.3, z: 65.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 651975230}
+  - {fileID: 1081179572}
   - {fileID: 984285816}
   - {fileID: 193569013}
   - {fileID: 793599451}
@@ -16770,12 +16783,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337899936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2a1ddd64e51084db9549bf39b54147, type: 3}
+  m_Script: {fileID: 11500000, guid: 1697937641b64084b8271df46b79a8db, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::poopMeter
-  poopNum: 5
-  food: {fileID: 560307777}
-  audioSource: {fileID: 1081179571}
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetectionScript
 --- !u!1 &1359667701
 GameObject:
   m_ObjectHideFlags: 0
@@ -16947,8 +16957,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4.4
+  m_fontSizeBase: 4.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22431,6 +22441,7 @@ GameObject:
   - component: {fileID: 2021756997}
   - component: {fileID: 2021756996}
   - component: {fileID: 2021757001}
+  - component: {fileID: 2021757002}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: Untagged
@@ -22553,7 +22564,7 @@ Transform:
   m_GameObject: {fileID: 2021756994}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16804071, y: -0.0000000034676748, z: 5.911166e-10, w: 0.98578006}
-  m_LocalPosition: {x: 0, y: 3.15, z: -6.18}
+  m_LocalPosition: {x: 0, y: 123.96001, z: 59.120003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22588,6 +22599,64 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &2021757002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021756994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineInputAxisController
+  ScanRecursively: 1
+  SuppressInputWhileBlending: 1
+  IgnoreTimeScale: 0
+  m_ControllerManager:
+    Controllers:
+    - Name: Look Orbit X
+      Owner: {fileID: 2021756996}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: 4000550617808902128, guid: 6a5ba0383ddfe564a9712deea3137bb4, type: 3}
+        Gain: 1
+        LegacyInput: 
+        LegacyGain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+    - Name: Look Orbit Y
+      Owner: {fileID: 2021756996}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: 4000550617808902128, guid: 6a5ba0383ddfe564a9712deea3137bb4, type: 3}
+        Gain: 1
+        LegacyInput: 
+        LegacyGain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+    - Name: Orbit Scale
+      Owner: {fileID: 2021756996}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: 0}
+        Gain: 1
+        LegacyInput: 
+        LegacyGain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+  PlayerIndex: -1
+  AutoEnableInputs: 1
 --- !u!1 &2088305637
 GameObject:
   m_ObjectHideFlags: 0
@@ -22706,8 +22775,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088305637}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1680407, y: -0.0000000034676748, z: 5.911161e-10, w: 0.98578006}
-  m_LocalPosition: {x: 0, y: 3.15, z: -6.18}
+  m_LocalRotation: {x: 0.7009093, y: -0.0000015560589, z: 0.0000015291348, w: 0.71325046}
+  m_LocalPosition: {x: 0.00000094194326, y: 133.66812, z: 65.08412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
