@@ -26,7 +26,7 @@ public class poopCollision : MonoBehaviour
                 //NPCReaction npc =
                 //other.GetComponentInParent<NPCReaction>();
 
-                Debug.Log("Poop hit NPC!");
+                other.GetComponent<npcMovement>().gotHit();
             }
             else
             {

@@ -6,7 +6,7 @@ namespace PlayerLocomotion
 
     public class XZ_Movement : MonoBehaviour
     {
-         [Header("References")]
+        [Header("References")]
         [SerializeField] private InputManager inputManager;
         [SerializeField] private Rigidbody player;
         [SerializeField] private Transform cameraObject;
@@ -15,13 +15,11 @@ namespace PlayerLocomotion
         [SerializeField] private float movementSpeed = 7f;
 
         [Header("Rotation Settings")]
-        [SerializeField] private float rotationDampening = 0.1f;
+        [SerializeField] private float rotationSpeed = 240f;
 
         private Vector2 movementInput;
-
         private Vector3 moveDirection;
         private float targetAngle;
-        private float turnSmoothVelocity;
 
         private const float INPUT_DEADZONE = 0.001f;
 
@@ -44,9 +42,7 @@ namespace PlayerLocomotion
                 movementInput.y
             );
 
-            inputDirection = Vector3.ClampMagnitude(
-                inputDirection, 1f
-            );
+            inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
 
             if (inputDirection.sqrMagnitude < INPUT_DEADZONE)
             {
@@ -58,7 +54,6 @@ namespace PlayerLocomotion
             Vector3 forward = cameraObject.forward;
             Vector3 right = cameraObject.right;
 
-            // Ignore camera pitch and roll
             forward.y = 0f;
             right.y = 0f;
 
@@ -69,11 +64,8 @@ namespace PlayerLocomotion
                 forward * inputDirection.z +
                 right * inputDirection.x;
 
-            moveDirection = Vector3.ClampMagnitude(
-                moveDirection, 1f
-            );
+            moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
 
-            // Determine desired player rotation
             targetAngle = Mathf.Atan2(
                 moveDirection.x,
                 moveDirection.z
@@ -84,7 +76,6 @@ namespace PlayerLocomotion
         {
             Vector3 velocity = player.linearVelocity;
 
-            // Control horizontal movement only
             velocity.x = moveDirection.x * movementSpeed;
             velocity.z = moveDirection.z * movementSpeed;
 
@@ -96,18 +87,19 @@ namespace PlayerLocomotion
             if (moveDirection.sqrMagnitude < INPUT_DEADZONE)
                 return;
 
-            float smoothAngle = Mathf.SmoothDampAngle(
-                player.rotation.eulerAngles.y,
+            Quaternion targetRotation = Quaternion.Euler(
+                0f,
                 targetAngle,
-                ref turnSmoothVelocity,
-                rotationDampening,
-                Mathf.Infinity,
-                Time.fixedDeltaTime
+                0f
             );
 
-            player.MoveRotation(
-                Quaternion.Euler(0f, smoothAngle, 0f)
+            Quaternion smoothRotation = Quaternion.RotateTowards(
+                player.rotation,
+                targetRotation,
+                rotationSpeed * Time.fixedDeltaTime
             );
+
+            player.MoveRotation(smoothRotation);
         }
 
         private void FixedUpdate()

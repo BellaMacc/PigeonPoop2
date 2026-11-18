@@ -1,19 +1,61 @@
-using UnityEngine;
-//https://www.youtube.com/watch?v=IbiwNnOv5So
-public class randomFoodSpawner : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject foodPrehab;
-    public int foodOnField;
-    // Update is called once per frame
-    void Update()
-    {
-        if (foodOnField<10)
-        {
-            Vector3 randomSpawnPosition = new Vector3(Random.Range(-10, 11), 5, Random.Range(-10, 11));
-            Instantiate(foodPrehab, randomSpawnPosition, Quaternion.identity);
-            foodOnField++;
 
+using System.Collections.Generic;
+using UnityEngine;
+public class RandomFoodSpawner : MonoBehaviour
+{
+    [ Header("Food Settings")]
+    [SerializeField] private GameObject foodPrefab;
+    [SerializeField] private int foodOnField;
+    [SerializeField] private int maxFoodOnField = 10;
+
+    [Header("Spawn Locations")]
+    [SerializeField] private Transform spawnLocationsParent;
+
+    private List<Transform> spawnPoints = new List<Transform>();
+
+    private void Start()
+    {
+        PopulateSpawnPoints();
+    }
+
+    private void PopulateSpawnPoints()
+    {
+        spawnPoints.Clear();
+
+        foreach (Transform spawnPoint in spawnLocationsParent)
+        {
+            spawnPoints.Add(spawnPoint);
         }
+    }
+
+    private void Update()
+    {
+        if (foodOnField < maxFoodOnField)
+        {
+            SpawnFood();
+        }
+    }
+
+    private void SpawnFood()
+    {
+        if (spawnPoints.Count == 0 || foodPrefab == null)
+            return;
+
+        Transform selectedPoint = spawnPoints[
+            Random.Range(0, spawnPoints.Count)
+        ];
+
+        Instantiate(
+            foodPrefab,
+            selectedPoint.position,
+            selectedPoint.rotation
+        );
+
+        foodOnField++;
+    }
+
+    public void SubtractFoodFromField(int amt)
+    {
+        foodOnField -= amt;
     }
 }

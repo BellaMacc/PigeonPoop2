@@ -1,11 +1,15 @@
 using UnityEngine;
-
+/*
+ * Handles Connections between differnt classes
+ * Handles sound, checks and calling functionalities
+ * */
 public class PigeonManager : MonoBehaviour
 {
     [SerializeField] CollisionDetectionScript collisionDetection;
     [SerializeField] PigeonData pigeonData;
-    [SerializeField] randomFoodSpawner foodSpawner;
+    [SerializeField] RandomFoodSpawner foodSpawner;
     [SerializeField] PlayerLocomotion.Flight flight;
+    
 
     [SerializeField] AudioSource audioSource;
 
@@ -29,7 +33,7 @@ public class PigeonManager : MonoBehaviour
         {
             pigeonData.EatFood(food.GetRefillValue());
             food.Consume();
-            foodSpawner.foodOnField -= 1;
+            foodSpawner.SubtractFoodFromField(1);
             SoundFXManager.PlaySound3D(SoundType.EAT, transform);
             Debug.Log("Miam!!");
         }
@@ -48,5 +52,8 @@ public class PigeonManager : MonoBehaviour
         return (pigeonData.CanPoop() && !flight.IsGrounded);    
     }
 
-
+    public bool IsGrounded()
+    {
+        return flight.IsGrounded;
+    }
 }

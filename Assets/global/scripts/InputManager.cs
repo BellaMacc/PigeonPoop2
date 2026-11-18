@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour
     private void HandleCamera(Vector2 input)
     {
         cameraInput = input;
-        //Debug.Log("Camera Input: " + input);
+       // Debug.Log("Camera Input: " + input);
         OnCameraMove.Invoke();
     }
 

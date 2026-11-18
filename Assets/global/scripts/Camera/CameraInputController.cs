@@ -89,18 +89,19 @@ namespace PlayerLocomotion
             if (player == null || cameraPivot == null)
                 return;
 
-            // Follow player's position
-            cameraPivot.position =
-                player.position + Vector3.up * followHeight;
+            Vector3 targetPosition =
+                player.transform.position + Vector3.up * followHeight;
 
-            // Get player's Y rotation
+            cameraPivot.position = targetPosition;
+
             float playerYaw = player.rotation.eulerAngles.y;
-
-            // Combine player rotation and camera orbit
             float cameraYaw = playerYaw + orbitOffset;
 
-            // Apply rotation without pitch or roll from player
-            cameraPivot.rotation = Quaternion.Euler(currentPitch,cameraYaw,0f);
+            cameraPivot.rotation = Quaternion.Euler(
+                currentPitch,
+                cameraYaw,
+                0f
+            );
         }
 
         private void LateUpdate()

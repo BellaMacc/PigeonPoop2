@@ -19,7 +19,7 @@ namespace PlayerLocomotion
         [SerializeField] private float groundCheckRadius = 0.2f;
         [SerializeField] private float groundCheckDistance = 0.25f;
 
-        private bool isGrounded;
+        [SerializeField] private bool isGrounded;
         private bool isPoopGliding;
 
         private float suspensionTimer;
