@@ -10,21 +10,20 @@ public class PooParticleManager: MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     //public GameObject mySphere;
-    public poopMeter poopMeter;
+    //public poopMeter poopMeter;
     //public Transform spawnPoint;
     // Sound Effect by RichardDooDee23 from Pixabay
-    public AudioSource audioSource;
+    
     public void SpawnSphere()
     {
-        if (poopMeter.poopNum > 0) {
-            poopMeter.poopNum--;
-            StartCoroutine(ShootPoop());
-            //SoundFXManager.PlaySound(SoundType.POOP);
-            SoundFXManager.PlaySound3D(SoundType.POOP, transform);
-            //audioSource.Play();
+        
+        StartCoroutine(ShootPoop());
+        //SoundFXManager.PlaySound(SoundType.POOP);
+       
+        //audioSource.Play();
 
-            //Instantiate(mySphere, spawnPoint.position, spawnPoint.rotation);
-        }
+        //Instantiate(mySphere, spawnPoint.position, spawnPoint.rotation);
+        
         
     }
     IEnumerator ShootPoop()

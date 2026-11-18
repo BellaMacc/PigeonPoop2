@@ -9,7 +9,7 @@ public class UI_Manager : MonoBehaviour
     public Slider poopSlider;
     public TextMeshProUGUI poopBarValueText;
 
-
+    
     public void UpdatePoopBar(int currentAmount, int totalAmount)
     {
         poopBarValueText.text = currentAmount.ToString() + "/" + totalAmount.ToString();

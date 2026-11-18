@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
 
     [Header("Priority Settings")]
     [SerializeField] private int activePriority = 20;
-    [SerializeField] private int inactivePriority = 10;
+    [SerializeField] private int inactivePriority = -1;
 
     private bool isPoopCameraActive;
 

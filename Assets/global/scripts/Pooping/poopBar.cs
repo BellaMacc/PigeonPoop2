@@ -5,6 +5,7 @@ using TMPro;
 
 public class poopBar : MonoBehaviour
 {
+    /*
     public Slider poopSlider;
     public TextMeshProUGUI poopBarValueText;
 
@@ -24,5 +25,10 @@ public class poopBar : MonoBehaviour
         poopSlider.maxValue = maxHealth;
 
 
+    }*/
+
+    private void OnEnable()
+    {
+        Debug.Log("poopBar depricated - BM");
     }
 }

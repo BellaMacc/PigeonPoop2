@@ -4,6 +4,13 @@ public class PigeonManager : MonoBehaviour
 {
     [SerializeField] CollisionDetectionScript collisionDetection;
     [SerializeField] PigeonData pigeonData;
+    [SerializeField] randomFoodSpawner foodSpawner;
+    [SerializeField] PlayerLocomotion.Flight flight;
+
+    [SerializeField] AudioSource audioSource;
+
+
+
 
     private void OnEnable()
     {
@@ -22,6 +29,8 @@ public class PigeonManager : MonoBehaviour
         {
             pigeonData.EatFood(food.GetRefillValue());
             food.Consume();
+            foodSpawner.foodOnField -= 1;
+            SoundFXManager.PlaySound3D(SoundType.EAT, transform);
             Debug.Log("Miam!!");
         }
         else
@@ -29,4 +38,15 @@ public class PigeonManager : MonoBehaviour
             Debug.Log("Too Full");
         }
     }
+    public void HandlePoop()
+    {
+        pigeonData.PoopFood(1);
+        SoundFXManager.PlaySound3D(SoundType.POOP, transform);
+    }
+    public bool CanPoop()
+    {
+        return (pigeonData.CanPoop() && !flight.IsGrounded);    
+    }
+
+
 }

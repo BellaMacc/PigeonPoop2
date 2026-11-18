@@ -14,6 +14,7 @@ poop counter +1
 // The collision I based on this coin collecting tutorial: https://www.youtube.com/watch?v=6iSJ_jh6Rdo
 public class poopMeter : MonoBehaviour
 {
+    /*
     public int poopNum = 5;
     public randomFoodSpawner food;
 
@@ -36,6 +37,10 @@ public class poopMeter : MonoBehaviour
             }
             
         }
+    }*/
+    private void OnEnable()
+    {
+        Debug.Log("Poop Meter Depricated - BM");
     }
-    
+
 }

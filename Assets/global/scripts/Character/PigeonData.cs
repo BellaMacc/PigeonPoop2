@@ -8,10 +8,13 @@ public class PigeonData : MonoBehaviour
     [SerializeField] int maxStomach = 10;
     [SerializeField] int currentStomach = 0;
 
-
+    private void Start()
+    {
+        uiManager.UpdatePoopBar(currentStomach, maxStomach);
+    }
     public bool EatFood(int amount)
     {
-        if (amount + currentStomach < maxStomach)
+        if (amount + currentStomach <= maxStomach)
         {
             currentStomach += amount;
             uiManager.UpdatePoopBar(currentStomach, maxStomach);
@@ -24,7 +27,7 @@ public class PigeonData : MonoBehaviour
 
     public bool PoopFood (int amount)
     {
-        if (currentStomach - amount > 0)
+        if (currentStomach - amount >= 0)
         {
             currentStomach -= amount;
             uiManager.UpdatePoopBar(currentStomach, maxStomach);
