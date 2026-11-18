@@ -67,9 +67,15 @@ namespace PlayerLocomotion
 
             if (active)
             {
+                // Stop vertical movement during poop mode
                 Vector3 velocity = player.linearVelocity;
                 velocity.y = 0f;
                 player.linearVelocity = velocity;
+            }
+            else
+            {
+                // Give the bird some grace time before falling
+                suspensionTimer = suspensionDuration;
             }
 
             UpdateGravity();

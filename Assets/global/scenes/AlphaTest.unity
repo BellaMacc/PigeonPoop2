@@ -5365,7 +5365,7 @@ GameObject:
   - component: {fileID: 147138014}
   - component: {fileID: 147138013}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GUI_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5462,6 +5462,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1585624869}
   - {fileID: 44248421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5480,6 +5481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193569013}
   - component: {fileID: 193569014}
+  - component: {fileID: 193569015}
   m_Layer: 0
   m_Name: CharacterData
   m_TagString: Untagged
@@ -5518,6 +5520,21 @@ MonoBehaviour:
   flight: {fileID: 984285817}
   poopManager: {fileID: 984285821}
   poopModeDuration: 10
+--- !u!114 &193569015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193569012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigeonData
+  uiManager: {fileID: 0}
+  maxStomach: 10
+  currentStomach: 0
 --- !u!1 &232063455
 GameObject:
   m_ObjectHideFlags: 0
@@ -17396,6 +17413,87 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1585624868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1585624869}
+  - component: {fileID: 1585624870}
+  m_Layer: 5
+  m_Name: UI_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1585624869
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585624868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147138017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1585624870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585624868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710cc46490df013439d567871a9c35b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
+  poopSlider: {fileID: 44248422}
+  poopBarValueText: {fileID: 1429098193}
+--- !u!1 &1637324401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637324402}
+  m_Layer: 0
+  m_Name: =======================  (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637324402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637324401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15844, y: 0.15032, z: 15.26074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1652335628
 GameObject:
   m_ObjectHideFlags: 0
@@ -22333,7 +22431,6 @@ GameObject:
   - component: {fileID: 2021756997}
   - component: {fileID: 2021756996}
   - component: {fileID: 2021757001}
-  - component: {fileID: 2021757000}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: Untagged
@@ -22462,64 +22559,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2021757000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021756994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineInputAxisController
-  ScanRecursively: 1
-  SuppressInputWhileBlending: 1
-  IgnoreTimeScale: 0
-  m_ControllerManager:
-    Controllers:
-    - Name: Look Orbit X
-      Owner: {fileID: 2021756996}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: 4000550617808902128, guid: 6a5ba0383ddfe564a9712deea3137bb4, type: 3}
-        Gain: 100
-        LegacyInput: 
-        LegacyGain: 1
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0
-        DecelTime: 0
-    - Name: Look Orbit Y
-      Owner: {fileID: 2021756996}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: 4000550617808902128, guid: 6a5ba0383ddfe564a9712deea3137bb4, type: 3}
-        Gain: 100
-        LegacyInput: 
-        LegacyGain: 1
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0
-        DecelTime: 0
-    - Name: Orbit Scale
-      Owner: {fileID: 2021756996}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: 4000550617808902128, guid: 6a5ba0383ddfe564a9712deea3137bb4, type: 3}
-        Gain: 1
-        LegacyInput: 
-        LegacyGain: 1
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0
-        DecelTime: 0
-  PlayerIndex: -1
-  AutoEnableInputs: 1
 --- !u!114 &2021757001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27624,6 +27663,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1125777492}
   - {fileID: 674080713}
+  - {fileID: 1496564913}
+  - {fileID: 560307778}
   - {fileID: 1050488229}
   - {fileID: 12609756}
   - {fileID: 2088305641}
@@ -27637,6 +27678,5 @@ SceneRoots:
   - {fileID: 1432525104}
   - {fileID: 1496152807}
   - {fileID: 1258926630}
-  - {fileID: 1496564913}
-  - {fileID: 560307778}
   - {fileID: 147138017}
+  - {fileID: 1637324402}
