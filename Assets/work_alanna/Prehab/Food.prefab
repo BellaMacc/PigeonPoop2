@@ -106,8 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1301b4ffc3055a4e90bd1a6b2da1e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatingCollectible
-  floatHeight: 0.25
+  floatHeight: 1
   floatSpeed: 2
+  startingY: 5
   rotationSpeed: 90
 --- !u!65 &5933158604197161652
 BoxCollider:

@@ -10,7 +10,7 @@ public class PigeonData : MonoBehaviour
 
     private void Start()
     {
-        uiManager.UpdatePoopBar(currentStomach, maxStomach);
+        uiManager.UpdatePoopBar(10, maxStomach);
     }
     public bool EatFood(int amount)
     {

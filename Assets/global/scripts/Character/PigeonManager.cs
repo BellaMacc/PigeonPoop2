@@ -9,6 +9,7 @@ public class PigeonManager : MonoBehaviour
     [SerializeField] PigeonData pigeonData;
     [SerializeField] RandomFoodSpawner foodSpawner;
     [SerializeField] PlayerLocomotion.Flight flight;
+    [SerializeField] GameManager gameManager;
     
 
     [SerializeField] AudioSource audioSource;
@@ -45,6 +46,7 @@ public class PigeonManager : MonoBehaviour
     public void HandlePoop()
     {
         pigeonData.PoopFood(1);
+        
         SoundFXManager.PlaySound3D(SoundType.POOP, transform);
     }
     public bool CanPoop()
@@ -58,10 +60,10 @@ public class PigeonManager : MonoBehaviour
     }
 
 
-    public void GivePoints(int amt)
+    public void GivePoints()
     {
-        points += amt; 
+        gameManager.GivePoints(100);
     }
 
-    public int GetPoints() { return points; }
+   
 }

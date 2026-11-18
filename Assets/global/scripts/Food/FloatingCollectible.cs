@@ -5,6 +5,7 @@ public class FloatingCollectible : MonoBehaviour
     [Header("Floating")]
     [SerializeField] private float floatHeight = 0.25f;
     [SerializeField] private float floatSpeed = 2f;
+    [SerializeField] private float startingY = 5f;
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 90f;
@@ -13,7 +14,7 @@ public class FloatingCollectible : MonoBehaviour
 
     private void Start()
     {
-        startPosition = transform.position;
+        startPosition = new Vector3(transform.position.x, transform.position.y + startingY, transform.position.z);
     }
 
     private void Update()

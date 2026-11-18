@@ -20,7 +20,7 @@ public class Poop : MonoBehaviour
             bool gotPoint = pooCast.CastDownward();
             if (gotPoint)
             {
-                pigeonManager.GivePoints(1);
+                pigeonManager.GivePoints();
             }
             pigeonModes.ExitPoopMode();
         }
