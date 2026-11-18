@@ -13,7 +13,7 @@ public class PigeonManager : MonoBehaviour
 
     [SerializeField] AudioSource audioSource;
 
-
+    [SerializeField] private int points = 0;
 
 
     private void OnEnable()
@@ -56,4 +56,12 @@ public class PigeonManager : MonoBehaviour
     {
         return flight.IsGrounded;
     }
+
+
+    public void GivePoints(int amt)
+    {
+        points += amt; 
+    }
+
+    public int GetPoints() { return points; }
 }

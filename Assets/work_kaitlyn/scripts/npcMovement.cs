@@ -204,6 +204,8 @@ public class npcMovement : MonoBehaviour
     {
         stop = true;
 
+        Debug.Log("Ive Been HIt!!");
+
         GetComponent<Renderer>().material = poopMat;
 
         Invoke("resetWalk", 3);

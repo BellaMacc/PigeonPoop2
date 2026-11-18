@@ -7769,6 +7769,7 @@ MonoBehaviour:
   foodSpawner: {fileID: 560307777}
   flight: {fileID: 984285817}
   audioSource: {fileID: 1081179571}
+  points: 0
 --- !u!1 &198937192
 GameObject:
   m_ObjectHideFlags: 0
@@ -23650,7 +23651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 1
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -24103,7 +24104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 0
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -32659,7 +32660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 1
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -33686,6 +33687,7 @@ GameObject:
   - component: {fileID: 984285817}
   - component: {fileID: 984285819}
   - component: {fileID: 984285821}
+  - component: {fileID: 984285822}
   m_Layer: 0
   m_Name: CharacterActions
   m_TagString: Untagged
@@ -33746,7 +33748,7 @@ MonoBehaviour:
   inputManager: {fileID: 1125777491}
   player: {fileID: 1337899937}
   cameraObject: {fileID: 2088305641}
-  movementSpeed: 30
+  movementSpeed: 37
   rotationSpeed: 180
 --- !u!114 &984285819
 MonoBehaviour:
@@ -33787,6 +33789,29 @@ MonoBehaviour:
   pooParticles: {fileID: 1050488227}
   pigeonModes: {fileID: 193569014}
   pigeonManager: {fileID: 193569016}
+  pooCast: {fileID: 984285822}
+--- !u!114 &984285822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984285815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c35e202cf443044d94b1da12a440df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoopRaycast
+  rayOrigin: {fileID: 1339442545}
+  rayDistance: 500
+  sphereRadius: 10
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  horizontalAngle: 0
+  verticalAngle: 90
+  npcTag: npc
+  drawDuration: 30
 --- !u!4 &985287623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6691544603890577026, guid: 21119ac949372c342bbc484a8f4fec79, type: 3}
@@ -35449,7 +35474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 0
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -42407,7 +42432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 0
   movePos: 1
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -52394,7 +52419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 0
   movePos: 0
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -52632,7 +52657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 1
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -53624,7 +53649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 0
   movePos: 1
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -59040,7 +59065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveX: 1
   movePos: 0
-  speed: 0.05
+  speed: 0.03
   moveDirection: 0
   poopMat: {fileID: 2100000, guid: 66e73988fc9f6634cb556b3e356ad22e, type: 2}
   stop: 0
@@ -59182,7 +59207,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 59.1
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -59208,8 +59233,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088305637}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7009094, y: 0.00006861368, z: -0.00006742649, w: 0.7132504}
-  m_LocalPosition: {x: -0.0000930086, y: 148.99579, z: 64.81658}
+  m_LocalRotation: {x: 0.15212369, y: 0.000000029684706, z: -0.0000000045689226, w: 0.9883615}
+  m_LocalPosition: {x: 0, y: 123.29354, z: 60.531418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

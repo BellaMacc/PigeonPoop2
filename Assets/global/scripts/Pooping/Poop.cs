@@ -5,6 +5,7 @@ public class Poop : MonoBehaviour
     [SerializeField] PooParticleManager pooParticles;
     [SerializeField] PoopMode pigeonModes;
     [SerializeField] PigeonManager pigeonManager;
+    [SerializeField] PoopRaycast pooCast;
 
     public void HandlePoop()
     {
@@ -16,6 +17,11 @@ public class Poop : MonoBehaviour
         {
             pigeonManager.HandlePoop();
             pooParticles.SpawnSphere();
+            bool gotPoint = pooCast.CastDownward();
+            if (gotPoint)
+            {
+                pigeonManager.GivePoints(1);
+            }
             pigeonModes.ExitPoopMode();
         }
     }
