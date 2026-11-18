@@ -1,4 +1,6 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
+using Unity.VectorGraphics;
 using UnityEngine;
 
 public class npcMovement : MonoBehaviour
@@ -7,44 +9,24 @@ public class npcMovement : MonoBehaviour
     public bool movePos;
     public float speed = 0.5f;
     public int moveDirection = 0;
+    Material ogMat;
+    public Material poopMat;
+    public bool stop = false;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //get manager script from parent
-        npcManager manager = GetComponentInParent<npcManager>();
-        if(manager != null)
-        {
-            //get the number of children
-            int childCount = manager.startLocations.transform.childCount;
-
-            //if there are children then pick random child
-            if(childCount > 0)
-            {
-                //pick random start location and move there
-                int randomLoc = Random.Range(0, childCount);
-                Transform randChild = manager.startLocations.transform.GetChild(randomLoc);
-                transform.position = randChild.position;
-
-                //if on side road move negatively along x
-                if (randChild.CompareTag("sideRoad"))
-                {
-                    moveX = true;
-                    movePos = false;
-                }
-                //if on main road move positively along z
-                else
-                {
-                    moveX = false;
-                    movePos = true;
-                }
-            }
-        }
+        ogMat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stop == true)
+        {
+            return;
+        }
+
         //get position
         Vector3 newCord = transform.position;
 
@@ -91,27 +73,147 @@ public class npcMovement : MonoBehaviour
         //if you get to a corner intersection
         if (intersection.CompareTag("corner"))
         {
-            int newDirection = Random.Range(0, 3);
-            //keep going straight
-            if (newDirection == 0)
+            transform.position = intersection.transform.position;
+            //checks which way the road allows
+            bool posX = intersection.gameObject.GetComponent<roadRestrictions>().posX;
+            bool negX = intersection.gameObject.GetComponent<roadRestrictions>().negX;
+            bool posZ = intersection.gameObject.GetComponent<roadRestrictions>().posZ;
+            bool negZ = intersection.gameObject.GetComponent<roadRestrictions>().negZ;
+
+            //sees if the way isnt allowed
+            bool wrongWay = true;
+
+            //loops until right direction
+            while (wrongWay == true)
             {
-                return;
-            }
-            else
-            {
-                moveX = !moveX;
-                if (newDirection == 1)
+                //generates random direction
+                int newDirection = Random.Range(0, 4);
+
+                //goes through all direction cases
+                switch (newDirection)
                 {
-                    movePos = true;
+                    //go posx
+                    case 0:
+                        if (posX)
+                        {
+                            //dont turn around
+                            if(moveX && !movePos)
+                            {
+                                break;
+                            }
+                            moveX = true;
+                            movePos = true;
+                            wrongWay = false;
+                        }
+                        break;
+                    //go negX
+                    case 1:
+                        if (negX)
+                        {
+                            //dont turn around
+                            if (moveX && movePos)
+                            {
+                                break;
+                            }
+
+                            moveX = true;
+                            movePos = false;
+                            wrongWay = false;
+                        }
+                        break;
+                    //go posZ
+                    case 2:
+                        if (posZ)
+                        {
+                            //dont turn around
+                            if (!moveX && !movePos)
+                            {
+                                break;
+                            }
+
+                            moveX = false;
+                            movePos = true;
+                            wrongWay = false;
+                        }
+                        break;
+                    //go negZ
+                    case 3:
+                        if (negZ)
+                        {
+                            //dont turn around
+                            if (!moveX && movePos)
+                            {
+                                break;
+                            }
+
+                            moveX = false;
+                            movePos = false;
+                            wrongWay = false;
+                        }
+                        break;
+                    //ruh roh thats not right
+                    default:
+                        break;
                 }
-                else
+            }
+        }
+        if (intersection.tag == "wall")
+        {
+            newPos();
+        }
+    }
+
+    int checkTraffic()
+    {
+        return (1);
+    }
+
+    void newPos()
+    {
+        //get manager script from parent
+        npcManager manager = GetComponentInParent<npcManager>();
+        if (manager != null)
+        {
+            //get the number of children
+            int childCount = manager.startLocations.transform.childCount;
+
+            //if there are children then pick random child
+            if (childCount > 0)
+            {
+                //pick random start location and move there
+                int randomLoc = Random.Range(0, childCount);
+                Transform randChild = manager.startLocations.transform.GetChild(randomLoc);
+                transform.position = randChild.position;
+
+                //if on side road move negatively along x
+                if (randChild.CompareTag("sideRoad"))
                 {
+                    moveX = true;
                     movePos = false;
                 }
-                
+                //if on main road move positively along z
+                else
+                {
+                    moveX = false;
+                    movePos = true;
+                }
             }
-            Debug.Log(newDirection);
         }
-        
+    }
+    public void gotHit()
+    {
+        stop = true;
+
+        Debug.Log("Ive Been HIt!!");
+
+        GetComponent<Renderer>().material = poopMat;
+
+        Invoke("resetWalk", 3);
+    }
+
+    void resetWalk()
+    {
+        stop = false;
+        GetComponent<Renderer>().material = ogMat;
     }
 }

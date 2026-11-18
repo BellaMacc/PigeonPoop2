@@ -725,11 +725,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309091779}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5719920a852f6e1428858a7fae4715a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
+  normalCamera: {fileID: 0}
+  poopCamera: {fileID: 0}
+  activePriority: 20
+  inactivePriority: 10
 --- !u!1 &333407626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,21 +1275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0c89fb5ff55d145874f7f250a687de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
-  soundList:
-  - name: FLAP
-    sounds: []
-  - name: COO
-    sounds: []
-  - name: EAT
-    sounds: []
-  - name: POOP
-    sounds: []
-  - name: SPLAT
-    sounds: []
-  - name: FOOTSTEP
-    sounds: []
-  - name: NPC
-    sounds: []
 --- !u!4 &628186240
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,7 +1448,7 @@ GameObject:
   - component: {fileID: 666250250}
   - component: {fileID: 666250253}
   m_Layer: 4
-  m_Name: Particle System
+  m_Name: GroupParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11313,13 +11302,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdb8003416eda84db0d2f2bbfafa621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.Flight
-  inputManager: {fileID: 1936673708}
   player: {fileID: 1950764450}
-  suspensionTime: 1
-  flapBoost: 3
-  downwardAcceleration: 2
-  flightLaunchForce: 8
-  fallAccelerationMultiplier: 1.5
+  groundCheck: {fileID: 962075989}
+  flapForce: 7
+  maxUpwardVelocity: 12
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckRadius: 0.2
+  groundCheckDistance: 0.25
 --- !u!114 &709777432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11333,10 +11324,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.XZ_Movement
   inputManager: {fileID: 1936673708}
-  movementSpeed: 7
-  rotationSpeed: 5
-  cameraObject: {fileID: 309091780}
   player: {fileID: 1950764450}
+  cameraObject: {fileID: 309091780}
+  movementSpeed: 7
+  rotationDampening: 0.1
 --- !u!1 &751637692
 GameObject:
   m_ObjectHideFlags: 0

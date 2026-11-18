@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 9197227536341107029}
   - component: {fileID: 1263525013078579860}
   - component: {fileID: 8536418805637862175}
+  - component: {fileID: 4674074300165530159}
   - component: {fileID: 5933158604197161652}
   - component: {fileID: 8799626738437108498}
+  - component: {fileID: 4835371768856906904}
   m_Layer: 0
   m_Name: Food
   m_TagString: food
@@ -28,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190042268609552212}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.35, y: 0.92, z: -2.704}
-  m_LocalScale: {x: 1, y: 1, z: 0.35955}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.01, y: 3.01, z: 1.0822455}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1263525013078579860
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92,6 +94,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4674074300165530159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190042268609552212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1301b4ffc3055a4e90bd1a6b2da1e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingCollectible
+  floatHeight: 1
+  floatSpeed: 2
+  startingY: 5
+  rotationSpeed: 90
 --- !u!65 &5933158604197161652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,3 +158,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4835371768856906904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190042268609552212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5cc48dab88a194ea404f72369f9cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicFoodObject
+  foodName: Default
+  refillValue: 1
