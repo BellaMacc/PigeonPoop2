@@ -21,7 +21,7 @@ public class UI_Manager : MonoBehaviour
     // The stomach body doesn't fill the whole PNG (the tube sits on top),
     // so these map "empty" and "full" to where the body actually starts and ends
     [Range(0f, 1f)] public float liquidEmptyFill = 0.07f;
-    [Range(0f, 1f)] public float liquidFullFill = 0.79f;
+    [Range(0f, 1f)] public float liquidFullFill = 1f;
 
     public void UpdatePoopBar(int currentAmount, int totalAmount)
     {
@@ -49,7 +49,10 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateScoreBar(int currentScore)
     {
-        scoreValue.text = currentScore.ToString() + ".00 $";
+        //scoreValue.text = currentScore.ToString() + ".00 $";
+
+        //Hamid Changes for Piggy bank
+        scoreValue.text = "$" + currentScore + ".00";
     }
 
 
