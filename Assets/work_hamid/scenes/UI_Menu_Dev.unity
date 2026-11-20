@@ -648,7 +648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &44248421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ RectTransform:
   m_Father: {fileID: 598438051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -41572,8 +41572,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 631164061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -43890,6 +43890,10 @@ MonoBehaviour:
   poopSlider: {fileID: 44248422}
   poopBarValueText: {fileID: 1429098193}
   scoreValue: {fileID: 600328477}
+  stomachLiquid: {fileID: 1178152585}
+  stomachCount: {fileID: 1088439784}
+  liquidEmptyFill: 0.07
+  liquidFullFill: 0.79
 --- !u!4 &1587948600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2991756831493838882, guid: 5106b120de5d21a418f77180c26f1c45, type: 3}
