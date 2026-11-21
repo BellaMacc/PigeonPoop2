@@ -15,7 +15,8 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float turnSpeed = 100f;
 
     [Header("Flapping")]
-    [SerializeField] private float flapForce = 7f;
+    [SerializeField] private float flapForce = 12f;
+    [SerializeField] private float maxUpwardVelocity = 20f;
     [SerializeField] private float flapGracePeriod = 1.5f;
 
     [Header("Gravity")]
@@ -33,7 +34,16 @@ public class FlightMovement : MonoBehaviour
     // Called when the player presses the flap button
     public void HandleFlap()
     {
-        verticalVelocity = flapForce;
+        // Immediately add an upward impulse
+        verticalVelocity += flapForce;
+
+        // Prevent unlimited upward acceleration
+        verticalVelocity = Mathf.Min(
+            verticalVelocity,
+            maxUpwardVelocity
+        );
+
+        // Reset the falling timer
         timeSinceLastFlap = 0f;
     }
 
@@ -42,16 +52,27 @@ public class FlightMovement : MonoBehaviour
         Transform player,
         float deltaTime)
     {
+        /*
         // Steer left and right
         player.Rotate(
             Vector3.up,
             input.x * turnSpeed * deltaTime,
             Space.World
-        );
+        );*/
+
+        // Steer left and right and fix jitter
+        float turnAmount = input.x * turnSpeed * deltaTime;
+        Quaternion targetRotation = Quaternion.Euler(0f,player.eulerAngles.y + turnAmount,0f);
+        player.rotation = targetRotation;
 
         // Adjust forward speed
         float targetSpeed = baseSpeed + input.y * speedAdjustment;
-        targetSpeed = Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
+
+        targetSpeed = Mathf.Clamp(
+            targetSpeed,
+            minSpeed,
+            maxSpeed
+        );
 
         currentSpeed = targetSpeed;
 
@@ -66,7 +87,7 @@ public class FlightMovement : MonoBehaviour
         // Move in the direction the bird is facing
         Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
 
-        // Add flap / falling velocity
+        // Add vertical flap / falling velocity
         forwardVelocity.y += verticalVelocity;
 
         return forwardVelocity;

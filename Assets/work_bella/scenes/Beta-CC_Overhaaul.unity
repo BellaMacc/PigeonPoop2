@@ -229,7 +229,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 1
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -923,7 +923,7 @@ MonoBehaviour:
   stateManager: {fileID: 69693560}
   groundMovement: {fileID: 1244170835}
   flightMovement: {fileID: 1873998328}
-  movementReference: {fileID: 672983375}
+  movementReference: {fileID: 1875048125}
   gravity: -20
   groundedGravity: -2
 --- !u!1 &969069571
@@ -1141,11 +1141,11 @@ MonoBehaviour:
   CameraSide: 1
   CameraDistance: 6.3
   AvoidObstacles:
-    Enabled: 0
+    Enabled: 1
     CollisionFilter:
       serializedVersion: 2
       m_Bits: 1
-    IgnoreTag: 
+    IgnoreTag: Player
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
@@ -1644,6 +1644,7 @@ MonoBehaviour:
   speedAdjustment: 4
   turnSpeed: 100
   flapForce: 7
+  maxUpwardVelocity: 15
   flapGracePeriod: 1.5
   gravity: -15
 --- !u!1 &1875048124

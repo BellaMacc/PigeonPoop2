@@ -93,9 +93,14 @@ public class PlayerMovement : MonoBehaviour
 
         // Combine horizontal and vertical velocity
         Vector3 finalVelocity = horizontalVelocity;
-        finalVelocity.y = verticalVelocity;
 
-        // Apply movement
+        // Walking uses PlayerMovement's gravity.
+        // Flying already includes its vertical velocity.
+        if (stateManager.CurrentState == PlayerMovementState.Walking)
+        {
+            finalVelocity.y = verticalVelocity;
+        }
+
         characterController.Move(finalVelocity * deltaTime);
     }
 }
