@@ -21,8 +21,33 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        groundMovement.enabled = false;
+        flightMovement.enabled = false;
+    }
+    private void OnEnable()
+    {
+        stateManager.OnStateChanged += HandleStateChange;
     }
 
+    private void OnDisable()
+    {
+        stateManager.OnStateChanged -= HandleStateChange;
+    }
+    private void HandleStateChange(PlayerMovementState state)
+    {
+        switch (state)
+        {
+            case PlayerMovementState.Walking:
+                DisableAllMovement();
+                groundMovement.enabled = true;
+                break;
+            case PlayerMovementState.Flying:
+                DisableAllMovement();
+                flightMovement.enabled = true;
+                break;
+        }
+
+    }
     // Called by InputManager's OnMovement event
     public void HandleMovementInput()
     {
@@ -36,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
             stateManager.SetState(PlayerMovementState.Flying);
         }
         flightMovement.HandleFlap();
+    }
+
+    private void DisableAllMovement()
+    {
+        flightMovement.enabled = false;
+        groundMovement.enabled = false;
     }
 
     private void Update()

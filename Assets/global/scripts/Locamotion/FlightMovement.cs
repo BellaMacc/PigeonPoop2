@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FlightMovement : MonoBehaviour
 {
+
     [Header("Flight References")]
     [SerializeField] private Transform flightDirection;
 
@@ -13,38 +14,33 @@ public class FlightMovement : MonoBehaviour
 
     [Header("Steering")]
     [SerializeField] private float turnSpeed = 100f;
+    [SerializeField] private float turnEaseInTime = 0.06f;
+    [SerializeField] private float turnEaseOutTime = 0.25f;
 
     [Header("Flapping")]
     [SerializeField] private float flapForce = 12f;
-    [SerializeField] private float maxUpwardVelocity = 20f;
-    [SerializeField] private float flapGracePeriod = 1.5f;
 
-    [Header("Gravity")]
-    [SerializeField] private float gravity = -15f;
+    [Header("Falling")]
+    [SerializeField] private float gravity = -10f;
+    [SerializeField] private float maxFallSpeed = 18f;
 
     private float currentSpeed;
     private float verticalVelocity;
-    private float timeSinceLastFlap;
+
+    private float currentTurnSpeed;
+    private float turnSmoothVelocity;
 
     private void Awake()
     {
         currentSpeed = baseSpeed;
     }
 
-    // Called when the player presses the flap button
+    // Called whenever the player presses flap
     public void HandleFlap()
     {
-        // Immediately add an upward impulse
+        // Every flap adds an immediate upward boost.
+        // This works while ascending, suspended or falling.
         verticalVelocity += flapForce;
-
-        // Prevent unlimited upward acceleration
-        verticalVelocity = Mathf.Min(
-            verticalVelocity,
-            maxUpwardVelocity
-        );
-
-        // Reset the falling timer
-        timeSinceLastFlap = 0f;
     }
 
     public Vector3 CalculateMovement(
@@ -52,20 +48,37 @@ public class FlightMovement : MonoBehaviour
         Transform player,
         float deltaTime)
     {
-        /*
-        // Steer left and right
+        // --------------------------------
+        // STEERING
+        // --------------------------------
+
+        float targetTurnSpeed = input.x * turnSpeed;
+
+        // Respond quickly when steering.
+        // Ease out more gradually when the stick is released.
+        float smoothTime = Mathf.Abs(input.x) > 0.01f
+            ? turnEaseInTime
+            : turnEaseOutTime;
+
+        currentTurnSpeed = Mathf.SmoothDamp(
+            currentTurnSpeed,
+            targetTurnSpeed,
+            ref turnSmoothVelocity,
+            smoothTime,
+            Mathf.Infinity,
+            deltaTime
+        );
+
         player.Rotate(
             Vector3.up,
-            input.x * turnSpeed * deltaTime,
+            currentTurnSpeed * deltaTime,
             Space.World
-        );*/
+        );
 
-        // Steer left and right and fix jitter
-        float turnAmount = input.x * turnSpeed * deltaTime;
-        Quaternion targetRotation = Quaternion.Euler(0f,player.eulerAngles.y + turnAmount,0f);
-        player.rotation = targetRotation;
+        // --------------------------------
+        // FORWARD SPEED
+        // --------------------------------
 
-        // Adjust forward speed
         float targetSpeed = baseSpeed + input.y * speedAdjustment;
 
         targetSpeed = Mathf.Clamp(
@@ -76,18 +89,26 @@ public class FlightMovement : MonoBehaviour
 
         currentSpeed = targetSpeed;
 
-        // Apply gravity after the flap grace period
-        timeSinceLastFlap += deltaTime;
+        // --------------------------------
+        // VERTICAL MOVEMENT
+        // --------------------------------
 
-        if (timeSinceLastFlap > flapGracePeriod)
-        {
-            verticalVelocity += gravity * deltaTime;
-        }
+        // Gravity acts continuously.
+        // Flaps provide immediate upward impulses.
+        verticalVelocity += gravity * deltaTime;
 
-        // Move in the direction the bird is facing
+        // Limit downward speed without limiting upward flap boosts.
+        verticalVelocity = Mathf.Max(
+            verticalVelocity,
+            -maxFallSpeed
+        );
+
+        // --------------------------------
+        // FINAL MOVEMENT
+        // --------------------------------
+
         Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
 
-        // Add vertical flap / falling velocity
         forwardVelocity.y += verticalVelocity;
 
         return forwardVelocity;
@@ -96,8 +117,11 @@ public class FlightMovement : MonoBehaviour
     public void ResetFlight()
     {
         currentSpeed = baseSpeed;
+
         verticalVelocity = 0f;
-        timeSinceLastFlap = 0f;
+
+        currentTurnSpeed = 0f;
+        turnSmoothVelocity = 0f;
     }
 }
 

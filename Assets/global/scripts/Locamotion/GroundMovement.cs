@@ -8,7 +8,7 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private float deceleration = 20f;
 
     [Header("Rotation")]
-    [SerializeField] private float rotationSpeed = 540f;
+    [SerializeField] private float rotationSpeed = 180;
     [SerializeField] private float rotationSharpness = 8f;
 
     private Vector3 currentVelocity;
