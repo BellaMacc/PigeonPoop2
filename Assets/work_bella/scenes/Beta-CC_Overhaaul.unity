@@ -628,10 +628,11 @@ MonoBehaviour:
   cameraTarget: {fileID: 672983375}
   cinemachineCamera: {fileID: 230950087}
   player: {fileID: 770917860}
-  pivotOffset: {x: 0, y: 0, z: 0}
+  pivotOffset: {x: 0, y: 1.5, z: 0}
   sensitivity: 120
   minPitch: -30
   maxPitch: 65
+  mouseSensitivity: 0.15
   cameraInput: {x: 0, y: 0}
 --- !u!114 &230950087
 MonoBehaviour:

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WalkingCameraController : CameraController
 {
@@ -14,11 +15,19 @@ public class WalkingCameraController : CameraController
     [SerializeField] private float minPitch = -30f;
     [SerializeField] private float maxPitch = 65f;
 
+
+    [Header("Mouse Only Settings")]
+    [SerializeField] private float mouseSensitivity = 0.15f;
+
+    [Header("Data Reads")]
     [SerializeField] private Vector2 cameraInput;
+
 
     // Private Variables
     private float yaw;
     private float pitch;
+    private bool usingMouse;
+
 
     private void Awake()
     {
@@ -42,16 +51,37 @@ public class WalkingCameraController : CameraController
 
     public override void HandleCameraInput(Vector2 input)
     {
+        // Determine which device generated the input
+        usingMouse = Mouse.current != null &&
+                     Mouse.current.delta.ReadValue() != Vector2.zero;
+
+        if (Gamepad.current != null &&
+            Gamepad.current.rightStick.ReadValue() != Vector2.zero)
+        {
+            usingMouse = false;
+        }
+
         // Store the latest stick input
         cameraInput = input;
+
+        
     }
 
     private void Update()
     {
-        // Continuously rotate while stick is held
-        yaw += cameraInput.x * sensitivity * Time.deltaTime;
+        if (!usingMouse)
+        {
+            //controller calculation
+            // Continuously rotate while stick is held
+            yaw += cameraInput.x * sensitivity * Time.deltaTime;
 
-        pitch -= cameraInput.y * sensitivity * Time.deltaTime;
+            pitch -= cameraInput.y * sensitivity * Time.deltaTime;
+        }
+        else
+        {
+            yaw += cameraInput.x * mouseSensitivity;
+            pitch -= cameraInput.y * mouseSensitivity;
+        }
 
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
     }
