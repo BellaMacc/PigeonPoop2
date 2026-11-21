@@ -9,6 +9,7 @@ public class Poop : MonoBehaviour
 
     public void HandlePoop()
     {
+        /*
         if (!pigeonModes.CanPoop() && pigeonManager.CanPoop())
         {
             pigeonModes.EnterPoopMode();
@@ -23,7 +24,7 @@ public class Poop : MonoBehaviour
                 pigeonManager.GivePoints();
             }
             pigeonModes.ExitPoopMode();
-        }
+        }*/
     }
 
 }

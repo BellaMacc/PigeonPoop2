@@ -6,6 +6,7 @@ namespace PlayerLocomotion
 
     public class XZ_Movement : MonoBehaviour
     {
+        /*
         [Header("References")]
         [SerializeField] private InputManager inputManager;
         [SerializeField] private Rigidbody player;
@@ -107,6 +108,11 @@ namespace PlayerLocomotion
             CalculateMovement();
             HandleMovement();
             HandleRotation();
+        }*/
+
+        private void OnEnable()
+        {
+            Debug.Log("You are using an outdated movement file, make sure to have the latest character controller updated - bm");
         }
     }
 

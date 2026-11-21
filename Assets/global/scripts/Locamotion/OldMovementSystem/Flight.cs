@@ -4,7 +4,7 @@ namespace PlayerLocomotion
 {
     public class Flight : MonoBehaviour
     {
-
+        /*
         [Header("References")]
         [SerializeField] private Rigidbody player;
         [SerializeField] private Transform groundCheck;
@@ -146,6 +146,11 @@ namespace PlayerLocomotion
             }
 
             CheckGrounded();
+        }*/
+
+        private void OnEnable()
+        {
+            Debug.Log("You are using an outdated flight file, make sure to have the latest character controller updated - bm");
         }
     }
 }

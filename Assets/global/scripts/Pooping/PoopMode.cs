@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoopMode : MonoBehaviour
 {
+    /*
     [Header("References")]
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] private Flight flight;
@@ -61,7 +62,7 @@ public class PoopMode : MonoBehaviour
     public bool CanPoop()
     {
         return isPoopMode;
-    }
+    }*/
 }
 
 

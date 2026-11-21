@@ -4,6 +4,7 @@ namespace PlayerLocomotion
 {
     public class CameraInputController : MonoBehaviour
     {
+        /*
         [Header("References")]
         [SerializeField] private InputManager inputManager;
         [SerializeField] private Rigidbody player;
@@ -108,6 +109,11 @@ namespace PlayerLocomotion
         {
             HandleCameraInput();
             UpdateCameraPivot();
+        }*/
+
+        private void OnEnable()
+        {
+            Debug.Log("You are using an old version of player controller, make sure you update to the new one -bm");
         }
     }
 }
