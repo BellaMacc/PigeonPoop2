@@ -9,6 +9,7 @@ public class GroundMovement : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 540f;
+    [SerializeField] private float rotationSharpness = 8f;
 
     private Vector3 currentVelocity;
 
@@ -56,10 +57,14 @@ public class GroundMovement : MonoBehaviour
             Quaternion targetRotation =
                 Quaternion.LookRotation(inputDirection);
 
-            playerTransform.rotation = Quaternion.RotateTowards(
+            float rotationSharpness = 8f;
+
+            float rotationFactor = 1f - Mathf.Exp(-rotationSharpness * deltaTime);
+
+            playerTransform.rotation = Quaternion.Slerp(
                 playerTransform.rotation,
                 targetRotation,
-                rotationSpeed * deltaTime
+                rotationFactor
             );
         }
 
