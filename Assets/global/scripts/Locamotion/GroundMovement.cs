@@ -12,6 +12,7 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private float rotationSharpness = 8f;
 
     private Vector3 currentVelocity;
+    
 
     public Vector3 CalculateMovement(
         Vector2 input,

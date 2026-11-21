@@ -13,15 +13,44 @@ public class CameraManager : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private InputManager inputManager;
+    [Header("State")]
+    [SerializeField] private PlayerStateManager stateManager;
+
 
     //Private Variables
     private CameraController activeCamera;
-
+    private void Awake()
+    {
+        poopCameraCtrl.DisableCamera();
+        flightCameraCtrl.DisableCamera();
+        walkingCameraCtrl.DisableCamera();  
+    }
     private void Start()
     {
         SwitchModes(currentMode);
     }
+    private void OnEnable()
+    {
+        stateManager.OnStateChanged += HandleStateChange;
+    }
+    private void OnDisable()
+    {
+        stateManager.OnStateChanged -= HandleStateChange;
+    }
 
+    public void HandleStateChange(PlayerMovementState state)
+    {
+        switch (state){
+            case (PlayerMovementState.Walking):
+                SwitchModes(CameraMode.Walking); 
+                break;
+            case (PlayerMovementState.Flying):
+                SwitchModes(CameraMode.Flight);
+                break;
+            default:
+                break;
+        }
+    }
     public void SwitchModes(CameraMode mode)
     {
         if (currentMode == mode && activeCamera != null)
@@ -80,10 +109,3 @@ public class CameraManager : MonoBehaviour
     }
 }
 
-
-public enum CameraMode
-{
-    Walking,
-    Flight,
-    Poop
-}

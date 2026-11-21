@@ -205,8 +205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52027106}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16754349, y: 0, z: 0, w: 0.9858647}
-  m_LocalPosition: {x: 0, y: 13.5, z: -10}
+  m_LocalRotation: {x: 0.16018228, y: 0, z: 0, w: 0.9870875}
+  m_LocalPosition: {x: 0, y: 12.1, z: -6.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,7 +568,19 @@ MonoBehaviour:
         m_CallState: 2
   OnFlap:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 770917862}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HandleFlap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPoop:
     m_PersistentCalls:
       m_Calls: []
@@ -647,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
+    Enabled: 1
     m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
@@ -750,6 +762,7 @@ MonoBehaviour:
   flightCameraCtrl: {fileID: 1121829706}
   walkingCameraCtrl: {fileID: 230950086}
   inputManager: {fileID: 217749366}
+  stateManager: {fileID: 69693560}
 --- !u!4 &644383776
 Transform:
   m_ObjectHideFlags: 0
@@ -909,6 +922,7 @@ MonoBehaviour:
   inputManager: {fileID: 217749366}
   stateManager: {fileID: 69693560}
   groundMovement: {fileID: 1244170835}
+  flightMovement: {fileID: 1873998328}
   movementReference: {fileID: 672983375}
   gravity: -20
   groundedGravity: -2
@@ -1052,6 +1066,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121829705}
+  - component: {fileID: 1121829709}
+  - component: {fileID: 1121829708}
+  - component: {fileID: 1121829707}
   - component: {fileID: 1121829706}
   m_Layer: 0
   m_Name: FlightCamera
@@ -1068,8 +1085,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121829704}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.16018228, y: 0, z: 0, w: 0.9870875}
+  m_LocalPosition: {x: 0, y: 2.1000004, z: -6.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1087,8 +1104,125 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc66b099f6dded2459c923c2d0ced4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlightCameraController
-  cameraTarget: {fileID: 0}
-  cinemachineCamera: {fileID: 0}
+  cameraTarget: {fileID: 1198379862}
+  cinemachineCamera: {fileID: 1121829709}
+  player: {fileID: 770917860}
+  sensitivity: 100
+  minPitch: -60
+  maxPitch: 60
+--- !u!114 &1121829707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121829704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineHardLookAt
+  LookAtOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1121829708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121829704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 0, y: -1.32, z: 0}
+  VerticalArmLength: 3.42
+  CameraSide: 1
+  CameraDistance: 6.3
+  AvoidObstacles:
+    Enabled: 0
+    CollisionFilter:
+      serializedVersion: 2
+      m_Bits: 1
+    IgnoreTag: 
+    CameraRadius: 0.2
+    DampingIntoCollision: 0
+    DampingFromCollision: 0.5
+--- !u!114 &1121829709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121829704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 1
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 1198379862}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!1 &1198379861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198379862}
+  m_Layer: 0
+  m_Name: FlightTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198379862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198379861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1348046835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223991770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1392,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 672983375}
+  - {fileID: 1198379862}
   m_Father: {fileID: 770917860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1570303130
@@ -1502,6 +1637,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c8a9f2e62a44146a1a603953ac2621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlightMovement
+  flightDirection: {fileID: 1198379862}
+  baseSpeed: 8
+  maxSpeed: 14
+  minSpeed: 4
+  speedAdjustment: 4
+  turnSpeed: 100
+  flapForce: 7
+  flapGracePeriod: 1.5
+  gravity: -15
 --- !u!1 &1875048124
 GameObject:
   m_ObjectHideFlags: 0

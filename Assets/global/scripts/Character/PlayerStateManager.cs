@@ -39,3 +39,11 @@ public enum PlayerMovementState
     Flying,
     Landing
 }
+
+
+public enum CameraMode
+{
+    Walking,
+    Flight,
+    Poop
+}

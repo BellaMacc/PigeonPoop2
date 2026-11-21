@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputManager inputManager;
     [SerializeField] private PlayerStateManager stateManager;
     [SerializeField] private GroundMovement groundMovement;
+    [SerializeField] private FlightMovement flightMovement;
     [SerializeField] private Transform movementReference;
 
     [Header("Gravity")]
@@ -26,6 +27,15 @@ public class PlayerMovement : MonoBehaviour
     public void HandleMovementInput()
     {
         movementInput = inputManager.ReadMovement();
+    }
+
+    public void HandleFlap()
+    {
+        if (!stateManager.IsFlying())
+        {
+            stateManager.SetState(PlayerMovementState.Flying);
+        }
+        flightMovement.HandleFlap();
     }
 
     private void Update()
@@ -50,7 +60,13 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case PlayerMovementState.Flying:
-                // FlightMovement will go here
+
+                horizontalVelocity = flightMovement.CalculateMovement(
+                    movementInput,
+                    transform,
+                    deltaTime
+                );
+
                 break;
 
             case PlayerMovementState.Landing:
@@ -59,13 +75,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Apply gravity
-        if (characterController.isGrounded && verticalVelocity < 0f)
+        if (stateManager.CurrentState == PlayerMovementState.Walking)
         {
-            verticalVelocity = groundedGravity;
+            if (characterController.isGrounded && verticalVelocity < 0f)
+            {
+                verticalVelocity = groundedGravity;
+            }
+            else
+            {
+                verticalVelocity += gravity * deltaTime;
+            }
         }
-        else
+        else if (stateManager.CurrentState == PlayerMovementState.Flying)
         {
-            verticalVelocity += gravity * deltaTime;
+            verticalVelocity = 0f;
         }
 
         // Combine horizontal and vertical velocity
