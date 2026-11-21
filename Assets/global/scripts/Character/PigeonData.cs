@@ -10,7 +10,11 @@ public class PigeonData : MonoBehaviour
 
     private void Start()
     {
-        uiManager.UpdatePoopBar(10, maxStomach);
+        //uiManager.UpdatePoopBar(10, maxStomach);
+        
+        // Hamid Changes:
+        // Show the real starting amount (was hard-coded to 10, so the bar started full)
+        uiManager.UpdatePoopBar(currentStomach, maxStomach);
     }
     public bool EatFood(int amount)
     {
