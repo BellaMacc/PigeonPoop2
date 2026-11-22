@@ -14,7 +14,7 @@ public class PooParticleManager: MonoBehaviour
     //public Transform spawnPoint;
     // Sound Effect by RichardDooDee23 from Pixabay
     
-    public void SpawnSphere()
+    public void StartPooParticles()
     {
         
         StartCoroutine(ShootPoop());

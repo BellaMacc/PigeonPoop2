@@ -9,6 +9,7 @@ public class Poop : MonoBehaviour
 
     public void HandlePoop()
     {
+        /*
         if (!pigeonModes.CanPoop() && pigeonManager.CanPoop())
         {
             pigeonModes.EnterPoopMode();
@@ -23,7 +24,13 @@ public class Poop : MonoBehaviour
                 pigeonManager.GivePoints();
             }
             pigeonModes.ExitPoopMode();
-        }
+        }*/
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("Depricate File 'poop.cs' male sure to update to new character controller - BM");
     }
 
 }
+

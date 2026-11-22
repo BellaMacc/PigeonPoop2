@@ -49,6 +49,8 @@ public class PigeonManager : MonoBehaviour
         
         SoundFXManager.PlaySound3D(SoundType.POOP, transform);
     }
+
+    /*
     public bool CanPoop()
     {
         return (pigeonData.CanPoop() && !flight.IsGrounded);    
@@ -58,7 +60,7 @@ public class PigeonManager : MonoBehaviour
     {
         return flight.IsGrounded;
     }
-
+    */
 
     public void GivePoints()
     {
