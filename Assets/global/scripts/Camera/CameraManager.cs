@@ -103,7 +103,7 @@ public class CameraManager : MonoBehaviour
 
         Vector2 input = inputManager.ReadCameraMovement();
 
-        Debug.Log("Sending input to: " + activeCamera.name);
+        //Debug.Log("Sending input to: " + activeCamera.name);
 
         activeCamera.HandleCameraInput(input);
     }

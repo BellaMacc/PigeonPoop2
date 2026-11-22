@@ -3,12 +3,12 @@ using UnityEngine;
 public class GroundMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float acceleration = 15f;
-    [SerializeField] private float deceleration = 20f;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float acceleration = 25f;
+    [SerializeField] private float deceleration = 30f;
 
     [Header("Rotation")]
-    [SerializeField] private float rotationSpeed = 180;
+    [SerializeField] private float rotationSpeed = 240;
     [SerializeField] private float rotationSharpness = 8f;
 
     private Vector3 currentVelocity;

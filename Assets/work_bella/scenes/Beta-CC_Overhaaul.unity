@@ -205,8 +205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52027106}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018228, y: 0, z: 0, w: 0.9870875}
-  m_LocalPosition: {x: 0, y: 12.1, z: -6.3}
+  m_LocalRotation: {x: 0.16754349, y: 0, z: 0, w: 0.9858647}
+  m_LocalPosition: {x: 0, y: 13.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -901,11 +901,11 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.37
-  m_Radius: 0.53
-  m_SlopeLimit: 45
+  m_Radius: 0.5
+  m_SlopeLimit: 90
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_SkinWidth: 0.1
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &770917862
 MonoBehaviour:
@@ -1085,8 +1085,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121829704}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018228, y: 0, z: 0, w: 0.9870875}
-  m_LocalPosition: {x: 0, y: 2.1000004, z: -6.3}
+  m_LocalRotation: {x: 0.09373309, y: 0, z: 0, w: 0.99559736}
+  m_LocalPosition: {x: 0, y: 1.8199997, z: -7.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1136,10 +1136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: -1.32, z: 0}
-  VerticalArmLength: 3.42
+  ShoulderOffset: {x: 0, y: -3.47, z: 0}
+  VerticalArmLength: 5.29
   CameraSide: 1
-  CameraDistance: 6.3
+  CameraDistance: 9.58
   AvoidObstacles:
     Enabled: 1
     CollisionFilter:
@@ -1217,7 +1217,7 @@ Transform:
   m_GameObject: {fileID: 1198379861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1638,16 +1638,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlightMovement
   flightDirection: {fileID: 1198379862}
-  baseSpeed: 8
-  maxSpeed: 14
-  minSpeed: 4
+  baseSpeed: 10
+  maxSpeed: 20
+  minSpeed: 5
   speedAdjustment: 4
   turnSpeed: 100
   turnEaseInTime: 0.06
   turnEaseOutTime: 0.25
-  flapForce: 7
-  gravity: -15
-  maxFallSpeed: 18
+  flapForce: 14
+  gravity: -10
+  maxFallSpeed: 7
 --- !u!1 &1875048124
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,9 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private Transform flightDirection;
 
     [Header("Forward Movement")]
-    [SerializeField] private float baseSpeed = 8f;
-    [SerializeField] private float maxSpeed = 14f;
-    [SerializeField] private float minSpeed = 4f;
+    [SerializeField] private float baseSpeed = 10f;
+    [SerializeField] private float maxSpeed = 20f;
+    [SerializeField] private float minSpeed = 5f;
     [SerializeField] private float speedAdjustment = 4f;
 
     [Header("Steering")]
@@ -18,11 +18,11 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float turnEaseOutTime = 0.25f;
 
     [Header("Flapping")]
-    [SerializeField] private float flapForce = 12f;
+    [SerializeField] private float flapForce = 14f;
 
     [Header("Falling")]
     [SerializeField] private float gravity = -10f;
-    [SerializeField] private float maxFallSpeed = 18f;
+    [SerializeField] private float maxFallSpeed = 7f;
 
     private float currentSpeed;
     private float verticalVelocity;
