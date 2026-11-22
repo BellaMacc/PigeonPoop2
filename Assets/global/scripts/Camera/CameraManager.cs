@@ -93,7 +93,7 @@ public class CameraManager : MonoBehaviour
 
     public void HandleCameraMovement()
     {
-        Debug.Log("Camera Manager received input");
+       // Debug.Log("Camera Manager received input");
 
         if (activeCamera == null)
         {

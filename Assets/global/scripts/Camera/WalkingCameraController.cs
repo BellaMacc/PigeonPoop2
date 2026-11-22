@@ -96,7 +96,7 @@ public class WalkingCameraController : CameraController
 
         cameraTarget.rotation = Quaternion.Euler(pitch, yaw, 0f);
 
-        Debug.Log($"Camera Target Rotation: {cameraTarget.eulerAngles}");
+       // Debug.Log($"Camera Target Rotation: {cameraTarget.eulerAngles}");
     }
 
     public Vector3 GetForwardDirection()

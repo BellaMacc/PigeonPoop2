@@ -7,23 +7,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStateManager stateManager;
     [SerializeField] private GroundMovement groundMovement;
     [SerializeField] private FlightMovement flightMovement;
+    [SerializeField] private LandingController landingController;
     [SerializeField] private Transform movementReference;
 
     [Header("Gravity")]
     [SerializeField] private float gravity = -20f;
     [SerializeField] private float groundedGravity = -2f;
 
-    // Private Variables
     private CharacterController characterController;
+
     private Vector2 movementInput;
     private float verticalVelocity;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+
         groundMovement.enabled = false;
         flightMovement.enabled = false;
     }
+
     private void OnEnable()
     {
         stateManager.OnStateChanged += HandleStateChange;
@@ -33,6 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         stateManager.OnStateChanged -= HandleStateChange;
     }
+
+    private void LateUpdate()
+    {
+        float deltaTime = Time.deltaTime;
+
+        CheckForLanding();
+
+        Vector3 movement = CalculateMovement(deltaTime);
+
+        ApplyMovement(movement, deltaTime);
+
+        CheckLandingCompletion();
+    }
+    //---------------------------------------------------------------------------------------------HELPER FUNCTIONS BELOW
+    //--------------------------------------------------------------------------------------STATES
+
     private void HandleStateChange(PlayerMovementState state)
     {
         switch (state)
@@ -41,26 +60,16 @@ public class PlayerMovement : MonoBehaviour
                 DisableAllMovement();
                 groundMovement.enabled = true;
                 break;
+
             case PlayerMovementState.Flying:
                 DisableAllMovement();
                 flightMovement.enabled = true;
                 break;
-        }
 
-    }
-    // Called by InputManager's OnMovement event
-    public void HandleMovementInput()
-    {
-        movementInput = inputManager.ReadMovement();
-    }
-
-    public void HandleFlap()
-    {
-        if (!stateManager.IsFlying())
-        {
-            stateManager.SetState(PlayerMovementState.Flying);
+            case PlayerMovementState.Landing:
+                DisableAllMovement();
+                break;
         }
-        flightMovement.HandleFlap();
     }
 
     private void DisableAllMovement()
@@ -69,44 +78,116 @@ public class PlayerMovement : MonoBehaviour
         groundMovement.enabled = false;
     }
 
-    private void Update()
+    //--------------------------------------------------------------------------------------INPUTS
+    public void HandleMovementInput()
     {
-        float deltaTime = Time.deltaTime;
+        movementInput = inputManager.ReadMovement();
+    }
 
-        Vector3 horizontalVelocity = Vector3.zero;
+    public void HandleFlap()
+    {
+        if (stateManager.IsLanding())
+            return;
 
-        // Select movement system based on current state
+        if (!stateManager.IsFlying())
+            stateManager.SetState(PlayerMovementState.Flying);
+
+        flightMovement.HandleFlap();
+    }
+
+   //--------------------------------------------------------------------------------------LANDING
+    private void CheckForLanding()
+    {
+        if (!stateManager.IsFlying())
+            return;
+
+        landingController.TryBeginLanding(characterController);
+    }
+
+    private void CheckLandingCompletion()
+    {
+        if (!stateManager.IsLanding())
+            return;
+
+        if (landingController.LandingComplete())
+            FinishLanding();
+    }
+
+    private void FinishLanding()
+    {
+        landingController.FinishLanding();
+
+        flightMovement.ResetFlight();
+        groundMovement.ResetMovement();
+
+        verticalVelocity = groundedGravity;
+        movementInput = Vector2.zero;
+
+        stateManager.SetState(PlayerMovementState.Walking);
+    }
+    //--------------------------------------------------------------------------------------MOVEMENT CALCULATIONS
+
+    private Vector3 CalculateMovement(float deltaTime)
+    {
         switch (stateManager.CurrentState)
         {
             case PlayerMovementState.Walking:
-
-                horizontalVelocity =
-                    groundMovement.CalculateMovement(
-                        movementInput,
-                        movementReference,
-                        transform,
-                        deltaTime
-                    );
-
-                break;
+                return CalculateWalkingMovement(deltaTime);
 
             case PlayerMovementState.Flying:
-
-                horizontalVelocity = flightMovement.CalculateMovement(
-                    movementInput,
-                    transform,
-                    deltaTime
-                );
-
-                break;
+                return CalculateFlyingMovement(deltaTime);
 
             case PlayerMovementState.Landing:
-                // LandingController will go here
-                break;
-        }
+                return CalculateLandingMovement(deltaTime);
 
-        // Apply gravity
-        if (stateManager.CurrentState == PlayerMovementState.Walking)
+            default:
+                return Vector3.zero;
+        }
+    }
+
+    private Vector3 CalculateWalkingMovement(float deltaTime)
+    {
+        return groundMovement.CalculateMovement(
+            movementInput,
+            movementReference,
+            transform,
+            deltaTime
+        );
+    }
+
+    private Vector3 CalculateFlyingMovement(float deltaTime)
+    {
+        return flightMovement.CalculateMovement(
+            movementInput,
+            transform,
+            deltaTime
+        );
+    }
+
+    private Vector3 CalculateLandingMovement(float deltaTime)
+    {
+        transform.rotation = landingController.CalculateLandingRotation(
+            deltaTime
+        );
+
+        return landingController.CalculateLandingMovement(deltaTime);
+    }
+
+
+    //--------------------------------------------------------------------------------------APPLY CALCULATIONS
+    private void ApplyMovement(Vector3 movement, float deltaTime)
+    {
+        ApplyGravity(deltaTime);
+
+        if (stateManager.IsWalking())
+            movement.y = verticalVelocity;
+
+        characterController.Move(movement * deltaTime);
+    }
+
+    private void ApplyGravity(float deltaTime)
+    {
+        if (stateManager.IsWalking())
         {
             if (characterController.isGrounded && verticalVelocity < 0f)
             {
@@ -117,21 +198,9 @@ public class PlayerMovement : MonoBehaviour
                 verticalVelocity += gravity * deltaTime;
             }
         }
-        else if (stateManager.CurrentState == PlayerMovementState.Flying)
+        else if (stateManager.IsFlying())
         {
             verticalVelocity = 0f;
         }
-
-        // Combine horizontal and vertical velocity
-        Vector3 finalVelocity = horizontalVelocity;
-
-        // Walking uses PlayerMovement's gravity.
-        // Flying already includes its vertical velocity.
-        if (stateManager.CurrentState == PlayerMovementState.Walking)
-        {
-            finalVelocity.y = verticalVelocity;
-        }
-
-        characterController.Move(finalVelocity * deltaTime);
     }
 }

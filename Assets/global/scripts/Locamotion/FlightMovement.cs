@@ -24,6 +24,8 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float gravity = -10f;
     [SerializeField] private float maxFallSpeed = 7f;
 
+    public float VerticalVelocity => verticalVelocity;
+
     private float currentSpeed;
     private float verticalVelocity;
 
@@ -76,9 +78,8 @@ public class FlightMovement : MonoBehaviour
         );
 
         // --------------------------------
-        // FORWARD SPEED
-        // --------------------------------
-
+        // FORWARD 
+       
         float targetSpeed = baseSpeed + input.y * speedAdjustment;
 
         targetSpeed = Mathf.Clamp(
@@ -89,12 +90,9 @@ public class FlightMovement : MonoBehaviour
 
         currentSpeed = targetSpeed;
 
-        // --------------------------------
+     
         // VERTICAL MOVEMENT
-        // --------------------------------
-
-        // Gravity acts continuously.
-        // Flaps provide immediate upward impulses.
+      
         verticalVelocity += gravity * deltaTime;
 
         // Limit downward speed without limiting upward flap boosts.
@@ -103,10 +101,7 @@ public class FlightMovement : MonoBehaviour
             -maxFallSpeed
         );
 
-        // --------------------------------
-        // FINAL MOVEMENT
-        // --------------------------------
-
+        // FINAL CALCULATIOn
         Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
 
         forwardVelocity.y += verticalVelocity;
