@@ -254,6 +254,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PoopModeToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""9969e547-12f4-46e0-9711-bbfa1f30cf54"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -355,6 +364,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e27b9313-9f2d-48eb-b593-118dfb00ad4e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoopModeToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f21ace45-65af-4372-8da6-f376117ec223"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoopModeToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -453,6 +484,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Interactions_NoseDive = m_Interactions.FindAction("NoseDive", throwIfNotFound: true);
         m_Interactions_Flap = m_Interactions.FindAction("Flap", throwIfNotFound: true);
         m_Interactions_Boost = m_Interactions.FindAction("Boost", throwIfNotFound: true);
+        m_Interactions_PoopModeToggle = m_Interactions.FindAction("PoopModeToggle", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_CameraMove = m_Camera.FindAction("CameraMove", throwIfNotFound: true);
@@ -638,6 +670,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Interactions_NoseDive;
     private readonly InputAction m_Interactions_Flap;
     private readonly InputAction m_Interactions_Boost;
+    private readonly InputAction m_Interactions_PoopModeToggle;
     /// <summary>
     /// Provides access to input actions defined in input action map "Interactions".
     /// </summary>
@@ -665,6 +698,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Interactions/Boost".
         /// </summary>
         public InputAction @Boost => m_Wrapper.m_Interactions_Boost;
+        /// <summary>
+        /// Provides access to the underlying input action "Interactions/PoopModeToggle".
+        /// </summary>
+        public InputAction @PoopModeToggle => m_Wrapper.m_Interactions_PoopModeToggle;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -703,6 +740,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Boost.started += instance.OnBoost;
             @Boost.performed += instance.OnBoost;
             @Boost.canceled += instance.OnBoost;
+            @PoopModeToggle.started += instance.OnPoopModeToggle;
+            @PoopModeToggle.performed += instance.OnPoopModeToggle;
+            @PoopModeToggle.canceled += instance.OnPoopModeToggle;
         }
 
         /// <summary>
@@ -726,6 +766,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Boost.started -= instance.OnBoost;
             @Boost.performed -= instance.OnBoost;
             @Boost.canceled -= instance.OnBoost;
+            @PoopModeToggle.started -= instance.OnPoopModeToggle;
+            @PoopModeToggle.performed -= instance.OnPoopModeToggle;
+            @PoopModeToggle.canceled -= instance.OnPoopModeToggle;
         }
 
         /// <summary>
@@ -905,6 +948,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBoost(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PoopModeToggle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPoopModeToggle(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Camera" which allows adding and removing callbacks.

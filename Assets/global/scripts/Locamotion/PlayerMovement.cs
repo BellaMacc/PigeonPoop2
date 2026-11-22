@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStateManager stateManager;
     [SerializeField] private GroundMovement groundMovement;
     [SerializeField] private FlightMovement flightMovement;
+    [SerializeField] private PoopModeMovement poopModeMovement;
     [SerializeField] private LandingController landingController;
     [SerializeField] private Transform movementReference;
 
@@ -66,9 +68,18 @@ public class PlayerMovement : MonoBehaviour
                 flightMovement.enabled = true;
                 break;
 
+            case PlayerMovementState.PoopMode:
+                DisableAllMovement();
+                poopModeMovement.enabled = true;
+                //flightMovement.ResetFlight();
+                //poopModeMovement.ResetMovement();
+                break;
+
             case PlayerMovementState.Landing:
                 DisableAllMovement();
                 break;
+
+            
         }
     }
 
@@ -76,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         flightMovement.enabled = false;
         groundMovement.enabled = false;
+        poopModeMovement.enabled = false;
     }
 
     //--------------------------------------------------------------------------------------INPUTS
@@ -86,16 +98,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void HandleFlap()
     {
-        if (stateManager.IsLanding())
+        //if the pigeon is landing or if in poop mode ignore flap
+        if (stateManager.IsLanding() || stateManager.IsPoopMode())
             return;
-
+        //check if already flying if not set mode the flying
         if (!stateManager.IsFlying())
             stateManager.SetState(PlayerMovementState.Flying);
 
         flightMovement.HandleFlap();
     }
 
-   //--------------------------------------------------------------------------------------LANDING
+    //--------------------------------------------------------------------------------------LANDING
     private void CheckForLanding()
     {
         if (!stateManager.IsFlying())
@@ -137,6 +150,9 @@ public class PlayerMovement : MonoBehaviour
             case PlayerMovementState.Flying:
                 return CalculateFlyingMovement(deltaTime);
 
+            case PlayerMovementState.PoopMode:
+                return CalculatePoopMovement(deltaTime);
+
             case PlayerMovementState.Landing:
                 return CalculateLandingMovement(deltaTime);
 
@@ -173,6 +189,10 @@ public class PlayerMovement : MonoBehaviour
         return landingController.CalculateLandingMovement(deltaTime);
     }
 
+    private Vector3 CalculatePoopMovement(float deltaTime)
+    {
+        return poopModeMovement.CalculateMovement(movementInput, transform, deltaTime);
+    }
 
     //--------------------------------------------------------------------------------------APPLY CALCULATIONS
     private void ApplyMovement(Vector3 movement, float deltaTime)
@@ -198,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
                 verticalVelocity += gravity * deltaTime;
             }
         }
-        else if (stateManager.IsFlying())
+        else if (stateManager.IsFlying() || stateManager.IsPoopMode())
         {
             verticalVelocity = 0f;
         }

@@ -27,4 +27,10 @@ public class Poop : MonoBehaviour
         }*/
     }
 
+    private void OnEnable()
+    {
+        Debug.Log("Depricate File 'poop.cs' male sure to update to new character controller - BM");
+    }
+
 }
+

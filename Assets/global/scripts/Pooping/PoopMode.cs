@@ -4,65 +4,36 @@ using UnityEngine;
 
 public class PoopMode : MonoBehaviour
 {
-    /*
-    [Header("References")]
-    [SerializeField] private CameraManager cameraManager;
-    [SerializeField] private Flight flight;
-    [SerializeField] private Poop poopManager;
+    [SerializeField] PlayerStateManager stateManager;
+    private bool isPoopMode = false;
 
-    [Header("Poop Mode Settings")]
-    [SerializeField] private float poopModeDuration = 10f;
 
-    private float poopTimer;
-    private bool isPoopMode;
-
-    public bool IsPoopMode => isPoopMode;
-
-    // Called through InputManager.OnPoop
-    public void EnterPoopMode()
-    {
-        if (isPoopMode)
-            return;
-
-        isPoopMode = true;
-        poopTimer = poopModeDuration;
-
-        cameraManager.SetPoopCamera(true);
-        flight.SetPoopGlide(true);
-
-        Debug.Log("Entered Poop Mode");
-    }
-
-    private void Update()
-    {
-        if (!isPoopMode)
-            return;
-
-        poopTimer -= Time.deltaTime;
-
-        if (poopTimer <= 0f)
-        {
-            ExitPoopMode();
-        }
-    }
-
-    public void ExitPoopMode()
-    {
-        if (!isPoopMode)
-            return;
-
-        isPoopMode = false;
-
-        cameraManager.SetPoopCamera(false);
-        flight.SetPoopGlide(false);
-
-        Debug.Log("Exited Poop Mode");
-    }
-
-    public bool CanPoop()
+    public bool IsPoopMode()
     {
         return isPoopMode;
-    }*/
+    }
+
+    public void HandleTogglePoopMode()
+    {
+        if(!isPoopMode && !stateManager.IsFlying()) { return; }
+
+        if(!isPoopMode && stateManager.IsFlying())
+        {
+            stateManager.SetState(PlayerMovementState.PoopMode);
+            isPoopMode=true;
+            return;
+        }
+
+        if (isPoopMode) {
+
+            stateManager.SetState(PlayerMovementState.Flying);
+            isPoopMode=false;
+            return;
+        }
+        
+    }
+
+
 }
 
 

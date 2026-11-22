@@ -40,14 +40,22 @@ public class CameraManager : MonoBehaviour
 
     public void HandleStateChange(PlayerMovementState state)
     {
-        switch (state){
-            case (PlayerMovementState.Walking):
-                SwitchModes(CameraMode.Walking); 
+        switch (state)
+        {
+            case PlayerMovementState.Walking:
+                SwitchModes(CameraMode.Walking);
                 break;
-            case (PlayerMovementState.Flying):
+
+            case PlayerMovementState.Flying:
                 SwitchModes(CameraMode.Flight);
                 break;
-            default:
+
+            case PlayerMovementState.PoopMode:
+                SwitchModes(CameraMode.Poop);
+                break;
+
+            case PlayerMovementState.Landing:
+                SwitchModes(CameraMode.Walking);
                 break;
         }
     }
