@@ -37,15 +37,13 @@ public class FlightCameraController : CameraController
 
     private void Update()
     {
-        // Read pitch input
+        if (cameraTarget == null || player == null)
+            return;
+
         pitch -= cameraInput.y * sensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        // Update tracking target before Cinemachine evaluates
-        if (cameraTarget != null || player == null)
-        {
-            cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
-        }
+        cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
     /*
     private void LateUpdate()
