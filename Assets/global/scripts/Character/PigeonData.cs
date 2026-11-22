@@ -14,14 +14,16 @@ public class PigeonData : MonoBehaviour
         
         // Hamid Changes:
         // Show the real starting amount (was hard-coded to 10, so the bar started full)
-        uiManager.UpdatePoopBar(currentStomach, maxStomach);
+        if (uiManager != null) { uiManager.UpdatePoopBar(currentStomach, maxStomach); }
+       
     }
     public bool EatFood(int amount)
     {
         if (amount + currentStomach <= maxStomach)
         {
             currentStomach += amount;
-            uiManager.UpdatePoopBar(currentStomach, maxStomach);
+            if (uiManager != null) { uiManager.UpdatePoopBar(currentStomach, maxStomach); }
+
             return true;
         }
 
@@ -34,7 +36,8 @@ public class PigeonData : MonoBehaviour
         if (currentStomach - amount >= 0)
         {
             currentStomach -= amount;
-            uiManager.UpdatePoopBar(currentStomach, maxStomach);
+            if(uiManager != null){ uiManager.UpdatePoopBar(currentStomach, maxStomach);}
+           
             return true;
            
         }
