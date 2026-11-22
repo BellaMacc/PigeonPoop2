@@ -923,7 +923,7 @@ MonoBehaviour:
   stateManager: {fileID: 69693560}
   groundMovement: {fileID: 1244170835}
   flightMovement: {fileID: 1873998328}
-  movementReference: {fileID: 1875048125}
+  movementReference: {fileID: 672983375}
   gravity: -20
   groundedGravity: -2
 --- !u!1 &969069571
@@ -1643,10 +1643,11 @@ MonoBehaviour:
   minSpeed: 4
   speedAdjustment: 4
   turnSpeed: 100
+  turnEaseInTime: 0.06
+  turnEaseOutTime: 0.25
   flapForce: 7
-  maxUpwardVelocity: 15
-  flapGracePeriod: 1.5
   gravity: -15
+  maxFallSpeed: 18
 --- !u!1 &1875048124
 GameObject:
   m_ObjectHideFlags: 0
