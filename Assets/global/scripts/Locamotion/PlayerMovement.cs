@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         stateManager.OnStateChanged -= HandleStateChange;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         float deltaTime = Time.deltaTime;
 

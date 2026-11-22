@@ -24,6 +24,13 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float gravity = -10f;
     [SerializeField] private float maxFallSpeed = 7f;
 
+    [Header("Obstacle Detection")]
+    [SerializeField] private FlightObstacteDetection obstacleDetector;
+    [SerializeField] private float obstacleSlowdownDistance = 3f;
+    [SerializeField] private float minimumObstacleSpeed = 1.5f;
+    [SerializeField] private float obstacleDeceleration = 12f;
+    [SerializeField] private float obstacleRecovery = 6f;
+
     public float VerticalVelocity => verticalVelocity;
 
     private float currentSpeed;
@@ -37,30 +44,51 @@ public class FlightMovement : MonoBehaviour
         currentSpeed = baseSpeed;
     }
 
-    // Called whenever the player presses flap
     public void HandleFlap()
     {
-        // Every flap adds an immediate upward boost.
-        // This works while ascending, suspended or falling.
         verticalVelocity += flapForce;
     }
+
 
     public Vector3 CalculateMovement(
         Vector2 input,
         Transform player,
         float deltaTime)
     {
-        // --------------------------------
-        // STEERING
-        // --------------------------------
+        CalculateSteering(input, player, deltaTime);
 
+        float targetSpeed = CalculateTargetSpeed(input);
+
+        targetSpeed = AdjustForObstacles(
+            targetSpeed,
+            player,
+            deltaTime
+        );
+
+        // Vertical movement
+        verticalVelocity += gravity * deltaTime;
+
+        verticalVelocity = Mathf.Max(
+            verticalVelocity,
+            -maxFallSpeed
+        );
+
+        // Final movement
+        Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
+
+        forwardVelocity.y += verticalVelocity;
+
+        return forwardVelocity;
+    }
+    // STEERING
+    private void CalculateSteering(
+        Vector2 input,
+        Transform player,
+        float deltaTime)
+    {
         float targetTurnSpeed = input.x * turnSpeed;
 
-        // Respond quickly when steering.
-        // Ease out more gradually when the stick is released.
-        float smoothTime = Mathf.Abs(input.x) > 0.01f
-            ? turnEaseInTime
-            : turnEaseOutTime;
+        float smoothTime = Mathf.Abs(input.x) > 0.01f ? turnEaseInTime: turnEaseOutTime;
 
         currentTurnSpeed = Mathf.SmoothDamp(
             currentTurnSpeed,
@@ -76,47 +104,54 @@ public class FlightMovement : MonoBehaviour
             currentTurnSpeed * deltaTime,
             Space.World
         );
+    }
 
-        // --------------------------------
-        // FORWARD 
-       
+    private float CalculateTargetSpeed(Vector2 input)
+    {
         float targetSpeed = baseSpeed + input.y * speedAdjustment;
 
-        targetSpeed = Mathf.Clamp(
-            targetSpeed,
-            minSpeed,
-            maxSpeed
-        );
-
-        currentSpeed = targetSpeed;
-
-     
-        // VERTICAL MOVEMENT
-      
-        verticalVelocity += gravity * deltaTime;
-
-        // Limit downward speed without limiting upward flap boosts.
-        verticalVelocity = Mathf.Max(
-            verticalVelocity,
-            -maxFallSpeed
-        );
-
-        // FINAL CALCULATIOn
-        Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
-
-        forwardVelocity.y += verticalVelocity;
-
-        return forwardVelocity;
+        return Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
     }
+
+
+    // OBSTACLE DETECTIOn
+    private float AdjustForObstacles(float targetSpeed, Transform player, float deltaTime)
+    {
+        RaycastHit hit = default;
+
+        bool obstacleDetected =obstacleDetector != null && obstacleDetector.TryDetectObstacle(player, out hit);
+
+        if (obstacleDetected)
+        {
+            float distanceFactor = Mathf.Clamp01(
+                hit.distance / obstacleSlowdownDistance
+            );
+
+            targetSpeed = Mathf.Lerp(
+                minimumObstacleSpeed,
+                targetSpeed,
+                distanceFactor
+            );
+        }
+
+        float speedChangeRate = targetSpeed < currentSpeed ? obstacleDeceleration : obstacleRecovery;
+
+        currentSpeed = Mathf.MoveTowards(currentSpeed,targetSpeed,speedChangeRate * deltaTime);
+
+        return currentSpeed;
+    }
+
+
+    
 
     public void ResetFlight()
     {
         currentSpeed = baseSpeed;
-
         verticalVelocity = 0f;
 
         currentTurnSpeed = 0f;
         turnSmoothVelocity = 0f;
     }
 }
+
 
