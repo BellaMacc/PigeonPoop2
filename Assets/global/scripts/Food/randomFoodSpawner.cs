@@ -1,32 +1,17 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+
+
 public class RandomFoodSpawner : MonoBehaviour
 {
-    [ Header("Food Settings")]
+    [Header("Food Settings")]
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private int foodOnField;
     [SerializeField] private int maxFoodOnField = 10;
 
     [Header("Spawn Locations")]
-    [SerializeField] private Transform spawnLocationsParent;
-
-    private List<Transform> spawnPoints = new List<Transform>();
-
-    private void Start()
-    {
-        PopulateSpawnPoints();
-    }
-
-    private void PopulateSpawnPoints()
-    {
-        spawnPoints.Clear();
-
-        foreach (Transform spawnPoint in spawnLocationsParent)
-        {
-            spawnPoints.Add(spawnPoint);
-        }
-    }
+    [SerializeField] private List<BoxCollider> spawnAreas = new List<BoxCollider>();
 
     private void Update()
     {
@@ -38,18 +23,30 @@ public class RandomFoodSpawner : MonoBehaviour
 
     private void SpawnFood()
     {
-        if (spawnPoints.Count == 0 || foodPrefab == null)
+        if (spawnAreas.Count == 0 || foodPrefab == null)
             return;
 
-        Transform selectedPoint = spawnPoints[
-            Random.Range(0, spawnPoints.Count)
-        ];
+        BoxCollider selectedArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
 
-        Instantiate(
-            foodPrefab,
-            selectedPoint.position,
-            selectedPoint.rotation
+        if (selectedArea == null)
+            return;
+
+        Vector3 halfSize = selectedArea.size * 0.5f;
+
+        float randomX = Random.Range(-halfSize.x, halfSize.x);
+        float randomZ = Random.Range(-halfSize.z, halfSize.z);
+
+        Vector3 localSpawnPosition = new Vector3(
+            randomX,
+            -halfSize.y,
+            randomZ
         );
+
+        Vector3 spawnPosition = selectedArea.transform.TransformPoint(
+            selectedArea.center + localSpawnPosition
+        );
+
+        Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
 
         foodOnField++;
     }
