@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Unity.Cinemachine;
 public class FlightCameraController : CameraController
 {
     [Header("Flight References")]
@@ -9,6 +9,22 @@ public class FlightCameraController : CameraController
     [SerializeField] private float sensitivity = 100f;
     [SerializeField] private float minPitch = -60f;
     [SerializeField] private float maxPitch = 60f;
+
+    [Header("Speed Camera Effects")]
+    [SerializeField] private FlightMovement flightMovement;
+    [SerializeField] private CinemachineCamera cineCamera;
+    [SerializeField] private CinemachineThirdPersonFollow thirdPersonFollow;
+
+    [SerializeField] private float speedThreshold = 1.1f;
+    [SerializeField] private float maxFOV = 55f;
+    [SerializeField] private float minCameraDistance = 8f;
+    [SerializeField] private float zoomSmoothness = 3f;
+
+    private float defaultFOV;
+    private float defaultCameraDistance;
+
+
+
 
     private Vector2 cameraInput;
     private float pitch;
@@ -28,6 +44,9 @@ public class FlightCameraController : CameraController
 
         pitch = 0f;
         cameraTarget.localRotation = Quaternion.identity;
+
+        defaultFOV = cineCamera.Lens.FieldOfView;
+        defaultCameraDistance = thirdPersonFollow.CameraDistance;
     }
 
     public override void HandleCameraInput(Vector2 input)
@@ -44,6 +63,7 @@ public class FlightCameraController : CameraController
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+        UpdateSpeedCamera();
     }
     /*
     private void LateUpdate()
@@ -58,5 +78,29 @@ public class FlightCameraController : CameraController
     {
         pitch = 0f;
         cameraInput = Vector2.zero;
+    }
+
+    //------------------------------------------------------------effects
+
+    private void UpdateSpeedCamera()
+    {
+        float speedRatio = flightMovement.GetCurrentSpeed() / flightMovement.GetBaseSpeed();
+
+        float speedFactor = Mathf.InverseLerp(speedThreshold, flightMovement.GetMaxSpeed() / flightMovement.GetBaseSpeed(), speedRatio);
+
+        float targetFOV = Mathf.Lerp(defaultFOV, maxFOV, speedFactor);
+        float targetDistance = Mathf.Lerp(defaultCameraDistance, minCameraDistance, speedFactor);
+
+        cineCamera.Lens.FieldOfView = Mathf.Lerp(
+            cineCamera.Lens.FieldOfView,
+            targetFOV,
+            zoomSmoothness * Time.deltaTime
+        );
+
+        thirdPersonFollow.CameraDistance = Mathf.Lerp(
+            thirdPersonFollow.CameraDistance,
+            targetDistance,
+            zoomSmoothness * Time.deltaTime
+        );
     }
 }

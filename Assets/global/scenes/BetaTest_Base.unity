@@ -146535,10 +146535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: -3.47, z: 0}
-  VerticalArmLength: 5.29
+  ShoulderOffset: {x: 0, y: -2.54, z: 0}
+  VerticalArmLength: 5
   CameraSide: 1
-  CameraDistance: 9.58
+  CameraDistance: 12
   AvoidObstacles:
     Enabled: 0
     CollisionFilter:
@@ -146582,8 +146582,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329019840621117324}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09373309, y: 0, z: 0, w: 0.99559736}
-  m_LocalPosition: {x: 0, y: 183.51, z: -7.95}
+  m_LocalRotation: {x: 0.08852714, y: 0, z: 0, w: 0.9960738}
+  m_LocalPosition: {x: 0, y: 184.15001, z: -10.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -161494,11 +161494,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlightMovement
   flightDirection: {fileID: 9193312159530777409}
   baseSpeed: 15
-  maxSpeed: 100
+  maxSpeed: 50
   minSpeed: 1
   speedAdjustment: 5
-  acceleration: 20
-  deceleration: 8
+  acceleration: 10
+  deceleration: 10
+  currentSpeed: 0
   turnSpeed: 100
   turnEaseInTime: 0.06
   turnEaseOutTime: 0.25
@@ -162054,6 +162055,13 @@ MonoBehaviour:
   sensitivity: 100
   minPitch: -60
   maxPitch: 60
+  flightMovement: {fileID: 4125174972520737134}
+  cineCamera: {fileID: 4702930907757207943}
+  thirdPersonFollow: {fileID: 750064008320308737}
+  speedThreshold: 1.1
+  maxFOV: 80
+  minCameraDistance: 5
+  zoomSmoothness: 3
 --- !u!4 &5527138027900417792
 Transform:
   m_ObjectHideFlags: 0
@@ -167669,7 +167677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineHardLookAt
-  LookAtOffset: {x: 0, y: 0, z: 0}
+  LookAtOffset: {x: 0, y: 0.31, z: 0}
 --- !u!198 &8785816193246863291
 ParticleSystem:
   m_ObjectHideFlags: 0
