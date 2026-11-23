@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPoop;
     public UnityEvent OnBoost;
     public UnityEvent OnNoseDive;
+    public UnityEvent OnNoseDiveReleased;
     public UnityEvent OnPoopModeToggle;
 
     private void Awake()
@@ -29,33 +30,27 @@ public class InputManager : MonoBehaviour
         playerControls = new PlayerControls();
 
         // Movement
-        playerControls.Movement.Move.performed +=
-            i => HandleMovement(i.ReadValue<Vector2>());
+        playerControls.GameControls.Move.performed +=i => HandleMovement(i.ReadValue<Vector2>());
 
-        playerControls.Movement.Move.canceled +=
-            i => HandleMovement(Vector2.zero);
+        playerControls.GameControls.Move.canceled += i => HandleMovement(Vector2.zero);
 
         // Camera
-        playerControls.Camera.CameraMove.performed +=
-            i => HandleCamera(i.ReadValue<Vector2>());
+        playerControls.GameControls.CameraMove.performed += i => HandleCamera(i.ReadValue<Vector2>());
 
-        playerControls.Camera.CameraMove.canceled +=
-            i => HandleCamera(Vector2.zero);
+        playerControls.GameControls.CameraMove.canceled += i => HandleCamera(Vector2.zero);
 
         // Interactions
-        playerControls.Interactions.Flap.performed +=
-            i => HandleFlap();
+        playerControls.GameControls.Flap.performed += i => HandleFlap();
 
-        playerControls.Interactions.Poop.performed +=
-            i => HandlePoop();
+        playerControls.GameControls.Poop.performed +=i => HandlePoop();
 
-        playerControls.Interactions.Boost.performed +=
-            i => HandleBoost();
+        playerControls.GameControls.Boost.performed += i => HandleBoost();
 
-        playerControls.Interactions.NoseDive.performed +=
-            i => HandleNoseDive();
-        playerControls.Interactions.PoopModeToggle.performed +=
-           i => HandlePoopModeToggle();
+        playerControls.GameControls.NoseDive.performed += i => HandleNoseDive();
+        playerControls.GameControls.NoseDive.canceled += i => HandleNoseDiveReleased();
+
+
+        playerControls.GameControls.PoopModeToggle.performed += i => HandlePoopModeToggle();
     }
 
     private void OnEnable()
@@ -110,6 +105,11 @@ public class InputManager : MonoBehaviour
     private void HandleNoseDive()
     {
         OnNoseDive.Invoke();
+    }
+
+    private void HandleNoseDiveReleased()
+    {
+        OnNoseDiveReleased.Invoke();
     }
 
     private void HandlePoopModeToggle()
