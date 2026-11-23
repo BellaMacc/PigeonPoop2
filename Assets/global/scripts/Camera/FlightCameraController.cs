@@ -20,6 +20,11 @@ public class FlightCameraController : CameraController
     [SerializeField] private float minCameraDistance = 8f;
     [SerializeField] private float zoomSmoothness = 3f;
 
+    [Header("Speed Pitch Limits")]
+    [SerializeField] private float speedMinPitch = -30f;
+    [SerializeField] private float speedMaxPitch = 30f;
+    [SerializeField] private float pitchLimitSmoothness = 3f;
+
     private float defaultFOV;
     private float defaultCameraDistance;
 
@@ -28,6 +33,8 @@ public class FlightCameraController : CameraController
 
     private Vector2 cameraInput;
     private float pitch;
+    private float currentMinPitch;
+    private float currentMaxPitch;
 
     private void Awake()
     {
@@ -43,10 +50,16 @@ public class FlightCameraController : CameraController
         }
 
         pitch = 0f;
+
+        currentMinPitch = minPitch;
+        currentMaxPitch = maxPitch;
+
         cameraTarget.localRotation = Quaternion.identity;
 
         defaultFOV = cineCamera.Lens.FieldOfView;
         defaultCameraDistance = thirdPersonFollow.CameraDistance;
+
+        
     }
 
     public override void HandleCameraInput(Vector2 input)
@@ -60,7 +73,7 @@ public class FlightCameraController : CameraController
             return;
 
         pitch -= cameraInput.y * sensitivity * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+        pitch = Mathf.Clamp(pitch, currentMinPitch, currentMaxPitch);
 
         cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         UpdateSpeedCamera();
@@ -85,22 +98,20 @@ public class FlightCameraController : CameraController
     private void UpdateSpeedCamera()
     {
         float speedRatio = flightMovement.GetCurrentSpeed() / flightMovement.GetBaseSpeed();
-
         float speedFactor = Mathf.InverseLerp(speedThreshold, flightMovement.GetMaxSpeed() / flightMovement.GetBaseSpeed(), speedRatio);
 
         float targetFOV = Mathf.Lerp(defaultFOV, maxFOV, speedFactor);
         float targetDistance = Mathf.Lerp(defaultCameraDistance, minCameraDistance, speedFactor);
 
-        cineCamera.Lens.FieldOfView = Mathf.Lerp(
-            cineCamera.Lens.FieldOfView,
-            targetFOV,
-            zoomSmoothness * Time.deltaTime
-        );
+        float targetMinPitch = Mathf.Lerp(minPitch, speedMinPitch, speedFactor);
+        float targetMaxPitch = Mathf.Lerp(maxPitch, speedMaxPitch, speedFactor);
 
-        thirdPersonFollow.CameraDistance = Mathf.Lerp(
-            thirdPersonFollow.CameraDistance,
-            targetDistance,
-            zoomSmoothness * Time.deltaTime
-        );
+        currentMinPitch = Mathf.Lerp(currentMinPitch, targetMinPitch, pitchLimitSmoothness * Time.deltaTime);
+        currentMaxPitch = Mathf.Lerp(currentMaxPitch, targetMaxPitch, pitchLimitSmoothness * Time.deltaTime);
+
+        pitch = Mathf.Clamp(pitch, currentMinPitch, currentMaxPitch);
+
+        cineCamera.Lens.FieldOfView = Mathf.Lerp(cineCamera.Lens.FieldOfView, targetFOV, zoomSmoothness * Time.deltaTime);
+        thirdPersonFollow.CameraDistance = Mathf.Lerp(thirdPersonFollow.CameraDistance, targetDistance, zoomSmoothness * Time.deltaTime);
     }
 }

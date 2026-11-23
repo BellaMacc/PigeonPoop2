@@ -146562,7 +146562,7 @@ MonoBehaviour:
   ShoulderOffset: {x: 0, y: 0, z: 0}
   VerticalArmLength: 5
   CameraSide: 1
-  CameraDistance: 12
+  CameraDistance: 15
   AvoidObstacles:
     Enabled: 0
     CollisionFilter:
@@ -146606,8 +146606,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329019840621117324}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18910763, y: 0, z: 0, w: 0.98195636}
-  m_LocalPosition: {x: 0, y: 186.69, z: -10.37}
+  m_LocalRotation: {x: 0.15423344, y: 0, z: 0, w: 0.9880344}
+  m_LocalPosition: {x: 0, y: 186.69, z: -13.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162104,16 +162104,19 @@ MonoBehaviour:
   cameraTarget: {fileID: 9193312159530777409}
   cinemachineCamera: {fileID: 4702930907757207943}
   player: {fileID: 1629230040245231762}
-  sensitivity: 100
+  sensitivity: 60
   minPitch: -60
   maxPitch: 60
   flightMovement: {fileID: 4125174972520737134}
   cineCamera: {fileID: 4702930907757207943}
   thirdPersonFollow: {fileID: 750064008320308737}
-  speedThreshold: 1.1
+  speedThreshold: 2.5
   maxFOV: 80
-  minCameraDistance: 5
-  zoomSmoothness: 3
+  minCameraDistance: 4
+  zoomSmoothness: 2
+  speedMinPitch: -30
+  speedMaxPitch: 30
+  pitchLimitSmoothness: 3
 --- !u!4 &5527138027900417792
 Transform:
   m_ObjectHideFlags: 0
