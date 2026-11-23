@@ -386,6 +386,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""PoopModeToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a9ec29e-84b5-45ba-8ff3-a532e55c8b79"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoopModeToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

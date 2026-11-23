@@ -142366,8 +142366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090577542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16754349, y: 0, z: 0, w: 0.9858647}
-  m_LocalPosition: {x: 0, y: 195.19, z: -10}
+  m_LocalRotation: {x: 0.692723, y: 0, z: 0, w: 0.72120374}
+  m_LocalPosition: {x: 0, y: 220.79, z: -4.800001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146445,7 +146445,34 @@ MonoBehaviour:
       m_Calls: []
   OnNoseDive:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6601726052343189915}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HandleNoseDive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNoseDiveReleased:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6601726052343189915}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HandleNoseDiveReleased
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPoopModeToggle:
     m_PersistentCalls:
       m_Calls:
@@ -161478,6 +161505,9 @@ MonoBehaviour:
   flapForce: 20
   gravity: -10
   maxFallSpeed: 20
+  noseDiveGravityMultiplier: 5
+  noseDiveMaxFallSpeed: 50
+  noseDiveImpulse: 10
   obstacleDetector: {fileID: 6325956714946527741}
   obstacleSlowdownDistance: 3
   minimumObstacleSpeed: 1.5

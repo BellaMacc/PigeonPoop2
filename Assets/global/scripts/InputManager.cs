@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPoop;
     public UnityEvent OnBoost;
     public UnityEvent OnNoseDive;
+    public UnityEvent OnNoseDiveReleased;
     public UnityEvent OnPoopModeToggle;
 
     private void Awake()
@@ -52,8 +53,10 @@ public class InputManager : MonoBehaviour
         playerControls.Interactions.Boost.performed +=
             i => HandleBoost();
 
-        playerControls.Interactions.NoseDive.performed +=
-            i => HandleNoseDive();
+        playerControls.Interactions.NoseDive.performed += i => HandleNoseDive();
+        playerControls.Interactions.NoseDive.canceled += i => HandleNoseDiveReleased();
+
+
         playerControls.Interactions.PoopModeToggle.performed +=
            i => HandlePoopModeToggle();
     }
@@ -110,6 +113,11 @@ public class InputManager : MonoBehaviour
     private void HandleNoseDive()
     {
         OnNoseDive.Invoke();
+    }
+
+    private void HandleNoseDiveReleased()
+    {
+        OnNoseDiveReleased.Invoke();
     }
 
     private void HandlePoopModeToggle()

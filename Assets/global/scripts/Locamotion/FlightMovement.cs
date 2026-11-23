@@ -26,13 +26,22 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float gravity = -10f;
     [SerializeField] private float maxFallSpeed = 7f;
 
+    [Header("Nose Dive")]
+    [SerializeField] private float noseDiveGravityMultiplier = 2.5f;
+    [SerializeField] private float noseDiveMaxFallSpeed = 18f;
+    [SerializeField] private float noseDiveImpulse = 5f;
+
+   
+
     [Header("Obstacle Detection")]
     [SerializeField] private FlightObstacteDetection obstacleDetector;
     [SerializeField] private float obstacleSlowdownDistance = 3f;
     [SerializeField] private float minimumObstacleSpeed = 1.5f;
     [SerializeField] private float obstacleDeceleration = 12f;
     [SerializeField] private float obstacleRecovery = 6f;
+    
 
+    private bool isNoseDiving;
     public float VerticalVelocity => verticalVelocity;
 
     private float currentSpeed;
@@ -79,12 +88,12 @@ public class FlightMovement : MonoBehaviour
         currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, speedChangeRate * deltaTime);
 
         // Vertical movement
-        verticalVelocity += gravity * deltaTime;
+       
+        float activeGravity = isNoseDiving ? gravity * noseDiveGravityMultiplier : gravity;
+        float activeMaxFallSpeed = isNoseDiving ? noseDiveMaxFallSpeed : maxFallSpeed;
 
-        verticalVelocity = Mathf.Max(
-            verticalVelocity,
-            -maxFallSpeed
-        );
+        verticalVelocity += activeGravity * deltaTime;
+        verticalVelocity = Mathf.Max(verticalVelocity, -activeMaxFallSpeed);
 
         // Final movement
         Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
@@ -142,8 +151,16 @@ public class FlightMovement : MonoBehaviour
         return targetSpeed;
     }
 
+    public void SetNoseDive(bool active)
+    {
+        if (active && !isNoseDiving)
+            verticalVelocity -= noseDiveImpulse;
 
+        if (!active && isNoseDiving)
+            verticalVelocity = Mathf.Max(verticalVelocity, -maxFallSpeed);
 
+        isNoseDiving = active;
+    }
 
     public void ResetFlight()
     {
@@ -152,6 +169,7 @@ public class FlightMovement : MonoBehaviour
 
         currentTurnSpeed = 0f;
         turnSmoothVelocity = 0f;
+        isNoseDiving = false;
     }
 }
 
