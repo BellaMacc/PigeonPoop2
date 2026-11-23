@@ -11,6 +11,8 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 20f;
     [SerializeField] private float minSpeed = 5f;
     [SerializeField] private float speedAdjustment = 4f;
+    [SerializeField] private float acceleration = 5f;
+    [SerializeField] private float deceleration = 8f;
 
     [Header("Steering")]
     [SerializeField] private float turnSpeed = 100f;
@@ -57,13 +59,24 @@ public class FlightMovement : MonoBehaviour
     {
         CalculateSteering(input, player, deltaTime);
 
+        // Speed calculation
+
         float targetSpeed = CalculateTargetSpeed(input);
 
-        targetSpeed = AdjustForObstacles(
-            targetSpeed,
-            player,
-            deltaTime
-        );
+        RaycastHit hit = default;
+        bool obstacleDetected = obstacleDetector != null && obstacleDetector.TryDetectObstacle(player, out hit);
+
+        if (obstacleDetected)
+        {
+            float distanceFactor = Mathf.Clamp01(hit.distance / obstacleSlowdownDistance);
+            targetSpeed = Mathf.Lerp(minimumObstacleSpeed, targetSpeed, distanceFactor);
+        }
+
+        float speedChangeRate = obstacleDetected
+            ? (targetSpeed < currentSpeed ? obstacleDeceleration : obstacleRecovery)
+            : (targetSpeed > currentSpeed ? acceleration : deceleration);
+
+        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, speedChangeRate * deltaTime);
 
         // Vertical movement
         verticalVelocity += gravity * deltaTime;
@@ -115,34 +128,22 @@ public class FlightMovement : MonoBehaviour
 
 
     // OBSTACLE DETECTIOn
-    private float AdjustForObstacles(float targetSpeed, Transform player, float deltaTime)
+    private float AdjustForObstacles(float targetSpeed, Transform player)
     {
         RaycastHit hit = default;
-
-        bool obstacleDetected =obstacleDetector != null && obstacleDetector.TryDetectObstacle(player, out hit);
+        bool obstacleDetected = obstacleDetector != null && obstacleDetector.TryDetectObstacle(player, out hit);
 
         if (obstacleDetected)
         {
-            float distanceFactor = Mathf.Clamp01(
-                hit.distance / obstacleSlowdownDistance
-            );
-
-            targetSpeed = Mathf.Lerp(
-                minimumObstacleSpeed,
-                targetSpeed,
-                distanceFactor
-            );
+            float distanceFactor = Mathf.Clamp01(hit.distance / obstacleSlowdownDistance);
+            targetSpeed = Mathf.Lerp(minimumObstacleSpeed, targetSpeed, distanceFactor);
         }
 
-        float speedChangeRate = targetSpeed < currentSpeed ? obstacleDeceleration : obstacleRecovery;
-
-        currentSpeed = Mathf.MoveTowards(currentSpeed,targetSpeed,speedChangeRate * deltaTime);
-
-        return currentSpeed;
+        return targetSpeed;
     }
 
 
-    
+
 
     public void ResetFlight()
     {
