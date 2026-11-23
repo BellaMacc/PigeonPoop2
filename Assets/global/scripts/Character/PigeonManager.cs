@@ -5,6 +5,7 @@ using UnityEngine;
  * */
 public class PigeonManager : MonoBehaviour
 {
+    /*
     [SerializeField] CollisionDetectionScript collisionDetection;
     [SerializeField] PigeonData pigeonData;
     [SerializeField] RandomFoodSpawner foodSpawner;
@@ -49,6 +50,8 @@ public class PigeonManager : MonoBehaviour
         
         SoundFXManager.PlaySound3D(SoundType.POOP, transform);
     }
+
+    /*
     public bool CanPoop()
     {
         return (pigeonData.CanPoop() && !flight.IsGrounded);    
@@ -58,12 +61,16 @@ public class PigeonManager : MonoBehaviour
     {
         return flight.IsGrounded;
     }
-
+  
 
     public void GivePoints()
     {
         gameManager.GivePoints(100);
     }
+      */
+    private void OnEnable()
+    {
+        Debug.Log("Pigeon Manager is Depricated, make sure you are using the new character controller");
+    }
 
-   
 }

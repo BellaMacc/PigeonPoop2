@@ -1,27 +1,47 @@
+using System;
 using UnityEngine;
 
 public class PigeonData : MonoBehaviour
 {
     [Header("Global References")]
-    [SerializeField] UI_Manager uiManager;
-    [Header("Stomach Data")]
-    [SerializeField] int maxStomach = 10;
-    [SerializeField] int currentStomach = 0;
+    [SerializeField] CollisionDetectionScript collisionDetection;
 
-    private void Start()
+    [Header("Stomach Data")]
+    [SerializeField] public int maxStomach = 10;
+    [SerializeField] public int currentStomach = 0;
+    [Header("Money Data")]
+    [SerializeField] float moneyTotal = 0f;
+
+    public event Action<int, int> StomachChanged;
+    public event Action<float> MoneyChanged;
+
+    private void OnEnable()
     {
-        //uiManager.UpdatePoopBar(10, maxStomach);
-        
-        // Hamid Changes:
-        // Show the real starting amount (was hard-coded to 10, so the bar started full)
-        uiManager.UpdatePoopBar(currentStomach, maxStomach);
+        collisionDetection.OnEat += HandleEating;
+
+    }
+
+    private void OnDisable()
+    {
+        collisionDetection.OnEat -= HandleEating;
+    }
+
+    public void HandleEating(BasicFoodObject food)
+    {
+        if (!CanEat()) { return; }
+
+        if (food == null) { return; }
+
+        EatFood(food.GetRefillValue());
+
+        food.Consume();
     }
     public bool EatFood(int amount)
     {
         if (amount + currentStomach <= maxStomach)
         {
             currentStomach += amount;
-            uiManager.UpdatePoopBar(currentStomach, maxStomach);
+            StomachChanged?.Invoke(currentStomach, maxStomach);
             return true;
         }
 
@@ -34,7 +54,7 @@ public class PigeonData : MonoBehaviour
         if (currentStomach - amount >= 0)
         {
             currentStomach -= amount;
-            uiManager.UpdatePoopBar(currentStomach, maxStomach);
+            StomachChanged?.Invoke(currentStomach, maxStomach);
             return true;
            
         }
@@ -42,6 +62,19 @@ public class PigeonData : MonoBehaviour
         //if you can't poop the food return false and take no action on stomach
         return false;
     }
+
+    public void GiveMoney(float amt)
+    {
+        moneyTotal += amt;
+        MoneyChanged?.Invoke(moneyTotal);
+    }
+
+    public void TakeMoney(float amt)
+    {
+        moneyTotal -= amt;
+        MoneyChanged?.Invoke(moneyTotal);
+    }
+
     public bool CanEat()
     {
         return currentStomach < maxStomach;
