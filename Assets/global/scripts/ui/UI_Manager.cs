@@ -5,9 +5,11 @@ using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] public PigeonData data;
     [Header("Score Bar")]
     public TextMeshProUGUI scoreValue;
-    [SerializeField] public PigeonData data;
+   
 
     // Hamid Chnages:
     [Header("Stomach Meter")]

@@ -107,7 +107,18 @@ public class PlayerMovement : MonoBehaviour
 
         flightMovement.HandleFlap();
     }
+    public void HandleNoseDive()
+    {
+        if (!stateManager.IsFlying())
+            return;
 
+        flightMovement.SetNoseDive(true);
+    }
+
+    public void HandleNoseDiveReleased()
+    {
+        flightMovement.SetNoseDive(false);
+    }
     //--------------------------------------------------------------------------------------LANDING
     private void CheckForLanding()
     {

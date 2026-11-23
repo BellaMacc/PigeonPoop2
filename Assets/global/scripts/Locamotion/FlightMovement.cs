@@ -13,6 +13,7 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float speedAdjustment = 4f;
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float deceleration = 8f;
+    [SerializeField] private float  currentSpeed = 0f;
 
     [Header("Steering")]
     [SerializeField] private float turnSpeed = 100f;
@@ -26,16 +27,25 @@ public class FlightMovement : MonoBehaviour
     [SerializeField] private float gravity = -10f;
     [SerializeField] private float maxFallSpeed = 7f;
 
+    [Header("Nose Dive")]
+    [SerializeField] private float noseDiveGravityMultiplier = 2.5f;
+    [SerializeField] private float noseDiveMaxFallSpeed = 18f;
+    [SerializeField] private float noseDiveImpulse = 5f;
+
+   
+
     [Header("Obstacle Detection")]
     [SerializeField] private FlightObstacteDetection obstacleDetector;
     [SerializeField] private float obstacleSlowdownDistance = 3f;
     [SerializeField] private float minimumObstacleSpeed = 1.5f;
     [SerializeField] private float obstacleDeceleration = 12f;
     [SerializeField] private float obstacleRecovery = 6f;
+    
 
+    private bool isNoseDiving;
     public float VerticalVelocity => verticalVelocity;
 
-    private float currentSpeed;
+   
     private float verticalVelocity;
 
     private float currentTurnSpeed;
@@ -79,12 +89,12 @@ public class FlightMovement : MonoBehaviour
         currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, speedChangeRate * deltaTime);
 
         // Vertical movement
-        verticalVelocity += gravity * deltaTime;
+       
+        float activeGravity = isNoseDiving ? gravity * noseDiveGravityMultiplier : gravity;
+        float activeMaxFallSpeed = isNoseDiving ? noseDiveMaxFallSpeed : maxFallSpeed;
 
-        verticalVelocity = Mathf.Max(
-            verticalVelocity,
-            -maxFallSpeed
-        );
+        verticalVelocity += activeGravity * deltaTime;
+        verticalVelocity = Mathf.Max(verticalVelocity, -activeMaxFallSpeed);
 
         // Final movement
         Vector3 forwardVelocity = flightDirection.forward * currentSpeed;
@@ -121,9 +131,13 @@ public class FlightMovement : MonoBehaviour
 
     private float CalculateTargetSpeed(Vector2 input)
     {
-        float targetSpeed = baseSpeed + input.y * speedAdjustment;
+        if (input.y > 0.1f)
+            return maxSpeed;
 
-        return Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
+        if (input.y < -0.1f)
+            return minSpeed;
+
+        return baseSpeed;
     }
 
 
@@ -142,8 +156,16 @@ public class FlightMovement : MonoBehaviour
         return targetSpeed;
     }
 
+    public void SetNoseDive(bool active)
+    {
+        if (active && !isNoseDiving)
+            verticalVelocity -= noseDiveImpulse;
 
+        if (!active && isNoseDiving)
+            verticalVelocity = Mathf.Max(verticalVelocity, -maxFallSpeed);
 
+        isNoseDiving = active;
+    }
 
     public void ResetFlight()
     {
@@ -152,7 +174,12 @@ public class FlightMovement : MonoBehaviour
 
         currentTurnSpeed = 0f;
         turnSmoothVelocity = 0f;
+        isNoseDiving = false;
     }
+
+    public float GetCurrentSpeed() { return currentSpeed; }
+    public float GetBaseSpeed() { return baseSpeed; }
+    public float GetMaxSpeed() { return maxSpeed; }
 }
 
 
