@@ -15,6 +15,7 @@ public class PoopingMechanic : MonoBehaviour
         poopVisuals.StartPooParticles();
         bool gotPoint = poopRaycast.CastDownward();
         if (gotPoint) { Debug.Log("hit someone!"); }
+        pigeonData.PoopFood(1);
 
     }
 

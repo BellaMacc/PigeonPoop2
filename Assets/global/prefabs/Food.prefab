@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FloatingCollectible
   floatHeight: 1
   floatSpeed: 2
-  startingY: 5
+  startingY: 0.5
   rotationSpeed: 90
 --- !u!65 &5933158604197161652
 BoxCollider:
@@ -125,7 +125,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -172,3 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicFoodObject
   foodName: Default
   refillValue: 1
+  groundCheckDistance: 10
+  groundOffset: 0.1
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295

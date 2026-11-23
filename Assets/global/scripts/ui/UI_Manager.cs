@@ -5,12 +5,9 @@ using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
-    [Header("Poop Bar")]
-    public Slider poopSlider;
-    public TextMeshProUGUI poopBarValueText;
-
     [Header("Score Bar")]
     public TextMeshProUGUI scoreValue;
+    [SerializeField] public PigeonData data;
 
     // Hamid Chnages:
     [Header("Stomach Meter")]
@@ -22,20 +19,21 @@ public class UI_Manager : MonoBehaviour
     // so these map "empty" and "full" to where the body actually starts and ends
     [Range(0f, 1f)] public float liquidEmptyFill = 0.07f;
     [Range(0f, 1f)] public float liquidFullFill = 1f;
-
+    private void Start()
+    {
+        UpdatePoopBar(data.currentStomach, data.maxStomach);
+       
+    }
+    private void OnEnable()
+    {
+        data.StomachChanged +=  UpdatePoopBar;
+        data.MoneyChanged += UpdateScoreBar;
+    }
     public void UpdatePoopBar(int currentAmount, int totalAmount)
     {
         //poopBarValueText.text = currentAmount.ToString() + "/" + totalAmount.ToString();
         //poopSlider.value = currentAmount;
-        //poopSlider.maxValue = totalAmount;
-
-        if (poopSlider != null)
-        {
-            poopSlider.maxValue = totalAmount;
-            poopSlider.value = currentAmount;
-        }
-        if (poopBarValueText != null)
-            poopBarValueText.text = currentAmount + "/" + totalAmount;
+        //poopSlider.maxValue = totalAmount
 
         // New stomach meter: liquid level shows how full the stomach is
         if (stomachLiquid != null && totalAmount > 0)
@@ -47,7 +45,7 @@ public class UI_Manager : MonoBehaviour
             stomachCount.text = currentAmount + "/" + totalAmount;
     }
 
-    public void UpdateScoreBar(int currentScore)
+    public void UpdateScoreBar(float currentScore)
     {
         //scoreValue.text = currentScore.ToString() + ".00 $";
 
