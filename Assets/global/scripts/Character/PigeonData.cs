@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-[RequireComponent(typeof(CharacterController))]
+
 public class PigeonData : MonoBehaviour
 {
     [Header("Global References")]
@@ -12,13 +12,17 @@ public class PigeonData : MonoBehaviour
     [Header("Money Data")]
     [SerializeField] float moneyTotal = 0f;
 
-    public event Action<int, int> StomachChanged;
-    public event Action<float> MoneyChanged;
+    
 
+    public static event Action<int, int> StomachChanged;
+    public static event Action<float> MoneyChanged;
+    private void Start()
+    {
+        StomachChanged?.Invoke(currentStomach, maxStomach);
+    }
     private void OnEnable()
     {
         collisionDetection.OnEat += HandleEating;
-
     }
 
     private void OnDisable()

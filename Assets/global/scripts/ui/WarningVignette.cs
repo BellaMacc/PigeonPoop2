@@ -38,12 +38,18 @@ public class WarningVignette : MonoBehaviour
     {
         BoundaryDetector.OnFoundBoundary += HandleFoundBoundary;
         BoundaryDetector.OnLostBoundary += HandleLostBoundary;
+
+        VerticalBoundaryDetector.OnHeightLimitDetected += HandleHeightLimit;
+        VerticalBoundaryDetector.OnHeightLimitLost += HandleLostBoundary;
     }
 
     private void OnDisable()
     {
         BoundaryDetector.OnFoundBoundary -= HandleFoundBoundary;
         BoundaryDetector.OnLostBoundary -= HandleLostBoundary;
+
+        VerticalBoundaryDetector.OnHeightLimitDetected -= HandleHeightLimit;
+        VerticalBoundaryDetector.OnHeightLimitLost -= HandleLostBoundary;
     }
 
 
@@ -54,6 +60,10 @@ public class WarningVignette : MonoBehaviour
     private void HandleLostBoundary()
     {
         intensity = 0f;
+    }
+    private void HandleHeightLimit(float distance, BoundaryType limitType)
+    {
+        intensity = 1f - Mathf.Clamp01(distance / warningDistnace);
     }
     public void SetIntensity(float x)
     {

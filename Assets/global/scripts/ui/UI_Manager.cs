@@ -6,7 +6,7 @@ using TMPro;
 public class UI_Manager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] public PigeonData data;
+    //[SerializeField] public PigeonData data;
     [Header("Score Bar")]
     public TextMeshProUGUI scoreValue;
    
@@ -21,15 +21,11 @@ public class UI_Manager : MonoBehaviour
     // so these map "empty" and "full" to where the body actually starts and ends
     [Range(0f, 1f)] public float liquidEmptyFill = 0.07f;
     [Range(0f, 1f)] public float liquidFullFill = 1f;
-    private void Start()
-    {
-        UpdatePoopBar(data.currentStomach, data.maxStomach);
-       
-    }
+    
     private void OnEnable()
     {
-        data.StomachChanged +=  UpdatePoopBar;
-        data.MoneyChanged += UpdateScoreBar;
+        PigeonData.StomachChanged +=  UpdatePoopBar;
+        PigeonData.MoneyChanged += UpdateScoreBar;
     }
     public void UpdatePoopBar(int currentAmount, int totalAmount)
     {
