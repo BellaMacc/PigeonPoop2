@@ -44,19 +44,4 @@ public class PlayerStateManager : MonoBehaviour
 
 }
 
-public enum PlayerMovementState
-{
-    Walking,
-    Flying,
-    PoopMode,
-    Landing
-}
-
-
-public enum CameraMode
-{
-    Walking,
-    Flight,
-    Poop
-}
 
