@@ -15318,7 +15318,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -15330,7 +15330,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153690698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -61019,7 +61019,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -61031,7 +61031,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786277618}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -99289,12 +99289,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WarningVignette
   vignetteImage: {fileID: 1341679532}
-  vignetteColor: {r: 1, g: 0.09019608, b: 0.023529414, a: 0.54509807}
+  vignetteColor: {r: 1, g: 0.09019608, b: 0.023529414, a: 1}
   maxAlpha: 0.8
   smoothness: 5
   pulseSpeed: 2
-  pulseStrength: 0.15
-  scaleStrength: 0.05
+  pulseStrength: 0.5
+  scaleStrength: 0.015
   scaleSmoothness: 5
   warningDistnace: 200
 --- !u!114 &1341679532
@@ -99310,7 +99310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.08837163, b: 0.02352941, a: 0.48235294}
+  m_Color: {r: 1, g: 0.08837163, b: 0.02352941, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
