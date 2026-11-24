@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/work_hamid/scenes/MainMenu_Full.unity
+    guid: a0a9ded60a96c7d42b21c2a7e4bd8e4f
+  - enabled: 1
+    path: Assets/work_hamid/scenes/BetaTest_Base.unity
+    guid: 9a386e227d83d8745b237b33dae2e82f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
