@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+[RequireComponent(typeof(CharacterController))]
 public class PigeonData : MonoBehaviour
 {
     [Header("Global References")]

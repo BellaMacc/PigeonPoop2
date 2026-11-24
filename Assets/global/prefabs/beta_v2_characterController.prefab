@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PoopingMechanic
   poopMode: {fileID: 1663347724789324572}
   poopRaycast: {fileID: 2614115210651107831}
-  pigeonData: {fileID: 5798839259677596667}
+  pigeonData: {fileID: 0}
   poopVisuals: {fileID: 542586327138570740}
 --- !u!114 &542586327138570740
 MonoBehaviour:
@@ -286,6 +286,8 @@ GameObject:
   - component: {fileID: 3214892137446899003}
   - component: {fileID: 9097603851545811222}
   - component: {fileID: 3925537881618653750}
+  - component: {fileID: 2929438478318278310}
+  - component: {fileID: 564184098708082553}
   m_Layer: 0
   m_Name: Detectors
   m_TagString: Untagged
@@ -345,54 +347,35 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &3370945088933478190
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6557157965912790908}
-  - component: {fileID: 5798839259677596667}
-  m_Layer: 0
-  m_Name: PigeonData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6557157965912790908
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370945088933478190}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2664195088007046269}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5798839259677596667
+--- !u!114 &2929438478318278310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370945088933478190}
+  m_GameObject: {fileID: 3354729415680814114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e8a45d90b7af34f9a7a680966db307, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PigeonData
-  collisionDetection: {fileID: 5901400771866262612}
-  maxStomach: 10
-  currentStomach: 5
-  moneyTotal: 0
+  m_EditorClassIdentifier: '::'
+--- !u!114 &564184098708082553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354729415680814114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4feebff1a92bf04c9efe579578a611d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  rayOrigin: {fileID: 1429854765365062432}
+  rayDistance: 500
+  detectionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &3555573024449243495
 GameObject:
   m_ObjectHideFlags: 0
@@ -5803,6 +5786,7 @@ GameObject:
   - component: {fileID: 2581960697423169291}
   - component: {fileID: 9007781930758431201}
   - component: {fileID: 5901400771866262612}
+  - component: {fileID: 4970021350918229641}
   m_Layer: 0
   m_Name: beta_v2_characterController
   m_TagString: Player
@@ -5826,7 +5810,6 @@ Transform:
   - {fileID: 2724402103796888310}
   - {fileID: 1799343225512582266}
   - {fileID: 2523969144051880882}
-  - {fileID: 6557157965912790908}
   - {fileID: 1537953321262926583}
   - {fileID: 5855333543495685106}
   - {fileID: 4823965639280875968}
@@ -5892,6 +5875,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1697937641b64084b8271df46b79a8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetectionScript
+--- !u!114 &4970021350918229641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411137377734727581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigeonData
+  collisionDetection: {fileID: 5901400771866262612}
+  maxStomach: 10
+  currentStomach: 5
+  moneyTotal: 0
 --- !u!1 &5765210008091716773
 GameObject:
   m_ObjectHideFlags: 0

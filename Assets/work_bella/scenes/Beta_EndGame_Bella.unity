@@ -38622,7 +38622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710cc46490df013439d567871a9c35b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  data: {fileID: 2925749740497407440}
+  data: {fileID: 0}
   scoreValue: {fileID: 1167457823}
   stomachLiquid: {fileID: 638086042}
   stomachCount: {fileID: 1374412578}
@@ -47180,40 +47180,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!1 &592099572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3354729415680814114, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
-  m_PrefabInstance: {fileID: 5822949153871694712}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &592099574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592099572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4feebff1a92bf04c9efe579578a611d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  rayOrigin: {fileID: 948661454}
-  rayDistance: 500
-  detectionLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &592099575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592099572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e8a45d90b7af34f9a7a680966db307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &595249861
 GameObject:
   m_ObjectHideFlags: 0
@@ -72584,11 +72550,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947077176}
   m_Mesh: {fileID: 7722797094005017668, guid: febcb8092300ff146bf46bddf20fcaea, type: 3}
---- !u!4 &948661454 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1429854765365062432, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
-  m_PrefabInstance: {fileID: 5822949153871694712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &952441604
 Mesh:
   m_ObjectHideFlags: 0
@@ -147055,17 +147016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17bcc49010df80c40b715e19b37a4f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateManager
---- !u!114 &2925749740497407440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5798839259677596667, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
-  m_PrefabInstance: {fileID: 5822949153871694712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PigeonData
 --- !u!4 &3823748032534285758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2664195088007046269, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
@@ -147136,16 +147086,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 8544284777170171679, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
+      propertyPath: pigeonData
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    m_RemovedGameObjects:
+    - {fileID: 3370945088933478190, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3354729415680814114, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 592099575}
-    - targetCorrespondingSourceObject: {fileID: 3354729415680814114, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 592099574}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9d366659c28346499656d0ff9390e7c, type: 3}
 --- !u!114 &6258440834233129149 stripped
 MonoBehaviour:
