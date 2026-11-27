@@ -13282,10 +13282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c13a2e368a69b4f93d1335de3901ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigeonModes
-  cameraManager: {fileID: 737132149}
-  flight: {fileID: 984285817}
-  poopManager: {fileID: 984285821}
-  poopModeDuration: 10
+  stateManager: {fileID: 0}
 --- !u!114 &193569015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13298,9 +13295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3db2cf88b614de468502742677e5542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigeonData
-  uiManager: {fileID: 1585624870}
+  collisionDetection: {fileID: 0}
   maxStomach: 10
   currentStomach: 10
+  moneyTotal: 0
 --- !u!114 &193569016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13313,13 +13311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5184a050123b04e958ec862fd6aa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigeonManager
-  collisionDetection: {fileID: 1337899940}
-  pigeonData: {fileID: 193569015}
-  foodSpawner: {fileID: 0}
-  flight: {fileID: 984285817}
-  gameManager: {fileID: 1236273032}
-  audioSource: {fileID: 1081179571}
-  points: 0
 --- !u!1 &195824070
 GameObject:
   m_ObjectHideFlags: 0
@@ -54572,10 +54563,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5719920a852f6e1428858a7fae4715a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
-  normalCamera: {fileID: 2021756997}
-  poopCamera: {fileID: 273757980}
-  activePriority: 20
-  inactivePriority: 10
+  currentMode: 0
+  poopCameraCtrl: {fileID: 0}
+  flightCameraCtrl: {fileID: 0}
+  walkingCameraCtrl: {fileID: 0}
+  inputManager: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!4 &737132150
 Transform:
   m_ObjectHideFlags: 0
@@ -55331,6 +55324,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5106b120de5d21a418f77180c26f1c45, type: 3}
+--- !u!1 &760007843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760007844}
+  m_Layer: 0
+  m_Name: =======================  (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &760007844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760007843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15844, y: 0.15032, z: 15.26074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &760061954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63989,17 +64013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdb8003416eda84db0d2f2bbfafa621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.Flight
-  player: {fileID: 1337899937}
-  groundCheck: {fileID: 1339442545}
-  flapForce: 10
-  maxUpwardVelocity: 20
-  suspensionDuration: 0.7
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  groundCheckRadius: 0.25
-  groundCheckDistance: 0.05
-  isGrounded: 0
 --- !u!114 &984285818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64012,11 +64025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553fbf4257709154f91a99f8d10b7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.XZ_Movement
-  inputManager: {fileID: 1125777491}
-  player: {fileID: 1337899937}
-  cameraObject: {fileID: 2088305641}
-  movementSpeed: 37
-  rotationSpeed: 120
 --- !u!114 &984285819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64029,18 +64037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2275b3d94ab8e4ca521e88cd891784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.CameraController
-  inputManager: {fileID: 1125777491}
-  player: {fileID: 1337899937}
-  cameraPivot: {fileID: 135243798}
-  normalPitch: 15
-  orbitSpeed: 120
-  recenterDelay: 3
-  recenterSpeed: 10
-  maxOrbitAngle: 100
-  minPitch: 5
-  maxPitch: 85
-  followHeight: 1.5
-  pitchSmoothSpeed: 5
 --- !u!114 &984285821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70224,6 +70220,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnNoseDive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNoseDiveReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPoopModeToggle:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1125777492
@@ -92814,9 +92816,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710cc46490df013439d567871a9c35b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  poopSlider: {fileID: 44248422}
-  poopBarValueText: {fileID: 1429098193}
+  data: {fileID: 0}
   scoreValue: {fileID: 600328477}
+  stomachLiquid: {fileID: 0}
+  stomachCount: {fileID: 0}
+  liquidEmptyFill: 0.07
+  liquidFullFill: 1
 --- !u!1001 &1586052479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92954,9 +92959,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710cc46490df013439d567871a9c35b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  poopSlider: {fileID: 1503792008}
-  poopBarValueText: {fileID: 1277721198}
+  data: {fileID: 0}
   scoreValue: {fileID: 876912588}
+  stomachLiquid: {fileID: 0}
+  stomachCount: {fileID: 0}
+  liquidEmptyFill: 0.07
+  liquidFullFill: 1
 --- !u!1001 &1589897839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202133,3 +202141,4 @@ SceneRoots:
   - {fileID: 1783590967}
   - {fileID: 280278157}
   - {fileID: 1294227429}
+  - {fileID: 760007844}

@@ -65,14 +65,17 @@ public class npcMovement : MonoBehaviour
             }
         }
         //set new position
+        newCord.y = 0.85f;
         transform.position = newCord;
     }
 
     void OnTriggerEnter(Collider intersection)
     {
+        Debug.Log("hit something");
         //if you get to a corner intersection
         if (intersection.CompareTag("corner"))
         {
+            Debug.Log("hit corner");
             transform.position = intersection.transform.position;
             //checks which way the road allows
             bool posX = intersection.gameObject.GetComponent<roadRestrictions>().posX;
@@ -157,9 +160,10 @@ public class npcMovement : MonoBehaviour
                 }
             }
         }
-        if (intersection.tag == "wall")
+        if (intersection.tag == "sideRoad" || intersection.tag == "mainRoad")
         {
             newPos();
+            Debug.Log("hit wall");
         }
     }
 
